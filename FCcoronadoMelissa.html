@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FCcoronadoMelissa</title>
+</head>
+ <body>
+
+    <h1>
+        Codea like a champion 🏍️💨
+    </h1>
+
+    <script>
+      function Usuario(nombre, apellido, libros, mascotas) {
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.libros = libros;
+        this.mascotas = mascotas;
+      }
+
+      Usuario.prototype = {
+        constructor: Usuario,
+        getFullName() {
+          return `Usuario: ${this.nombre} ${this.apellido}.`;
+        },
+        addmascota(newMascota){
+          this.mascotas.push(newMascota);
+        },
+        getMascotas(){
+          return this.mascotas.length;
+        },
+        addBook(book, autor){
+          this.libros.push( {
+            "nombre": book,
+            "autor": autor
+          });
+        },
+        getBooks(){
+          let nombresLibros = []
+          this.libros.forEach(item => nombresLibros.push(item.nombre));
+          return nombresLibros;
+        }
+      };
+
+      let mascotas = ["Perro", "Gato"];
+      let libros = [
+        {
+          "nombre": "El señor de las moscas",
+          "autor": "William Golding"
+        },
+        {
+          "nombre": "Fundacion",
+          "autor": "Isaac Asimov"
+        }]
+
+      let usuario = new Usuario("Melissa","Coronado", libros, mascotas);
+      console.log(usuario.getFullName());
+
+      usuario.addmascota("Loro");
+      usuario.addmascota("Pajaro");
+      console.log(`Cantidad de Mascotas: ${ usuario.getMascotas() }.`);
+
+      usuario.addBook("Javascript","El Autor")
+
+      console.log(usuario.getBooks());
+
+    </script>
+ </body>
+</html>
