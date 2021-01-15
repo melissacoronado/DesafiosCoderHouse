@@ -1,14 +1,10 @@
-export class Operaciones{
-    private num1: number;
-    private num2: number;
-    //private resultado: number;
+import operacionMatematica from './TS+CoronadoMelissa'
 
-    constructor(n1: number, n2: number, opera: string){
-        this.num1 = n1;
-        this.num2 = n2;        
-    }
 
-    public resultado(n1: number, n2: number, opera: string, callback){
-        callback(n1, n2, opera);
-    }
+let operaciones = () =>{
+
+    operacionMatematica(4,5,'suma').then((retorno) => console.log(`El resultado de la Suma es: ${retorno}`));
+    operacionMatematica(4,5,'resta').then((retorno) => console.log(`El resultado de la Resta es: ${retorno}`));
 }
+
+operaciones();
