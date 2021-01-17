@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Sumar = void 0;
 var Sumar = /** @class */ (function () {
     function Sumar(n1, n2) {
         this.num1 = n1;
@@ -10,4 +11,4 @@ var Sumar = /** @class */ (function () {
     };
     return Sumar;
 }());
-exports.default = Sumar;
+exports.Sumar = Sumar;

@@ -54,14 +54,9 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
         if (op[0] & 5) throw op[1]; return { value: op[0] ? op[1] : void 0, done: true };
     }
 };
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 Object.defineProperty(exports, "__esModule", { value: true });
-var suma_1 = __importDefault(require("./suma"));
-var resta_1 = __importDefault(require("./resta"));
 var operacion = function (num1, num2, operacion) { return __awaiter(void 0, void 0, void 0, function () {
-    var _a, opSuma, sum, sumando_1, opResta, rest_, restando_1;
+    var _a, opSuma, sumando_1, opResta, restando_1;
     return __generator(this, function (_b) {
         switch (_b.label) {
             case 0:
@@ -71,19 +66,17 @@ var operacion = function (num1, num2, operacion) { return __awaiter(void 0, void
                     case "resta": return [3 /*break*/, 3];
                 }
                 return [3 /*break*/, 5];
-            case 1: return [4 /*yield*/, Promise.resolve().then(function () { return __importStar(require('./suma')); })];
+            case 1: return [4 /*yield*/, Promise.resolve().then(function () { return __importStar(require('./sumar')); })];
             case 2:
                 opSuma = _b.sent();
-                sum = opSuma.default;
-                sumando_1 = new suma_1.default(num1, num2);
+                sumando_1 = new opSuma.Sumar(num1, num2);
                 return [2 /*return*/, new Promise(function (resolutionFunc, rejectionFunc) {
                         resolutionFunc(sumando_1.resultado());
                     })];
-            case 3: return [4 /*yield*/, Promise.resolve().then(function () { return __importStar(require('./resta')); })];
+            case 3: return [4 /*yield*/, Promise.resolve().then(function () { return __importStar(require('./restar')); })];
             case 4:
                 opResta = _b.sent();
-                rest_ = opResta.default;
-                restando_1 = new resta_1.default(num1, num2);
+                restando_1 = new opResta.Restar(num1, num2);
                 return [2 /*return*/, new Promise(function (resolutionFunc, rejectionFunc) {
                         resolutionFunc(restando_1.resultado());
                     })];

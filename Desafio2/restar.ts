@@ -1,4 +1,4 @@
-export default class Sumar{
+export class Restar{
     private num1: number;
     private num2: number;
 
@@ -7,8 +7,7 @@ export default class Sumar{
         this.num2 = n2;        
     }
 
-    public resultado(){
-        return this.num1 + this.num2;
+    public resultado() {
+        return this.num1 - this.num2;
     }
 }
-
