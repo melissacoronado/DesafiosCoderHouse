@@ -1,53 +1,30 @@
-let Finalizar = (intInterval) =>{
+let Finalizar = (intInterval, cantPalabras) =>{
     clearInterval(intInterval);
-    console.log("Proceso Completo!");
+    console.log("Proceso Completo! " + cantPalabras + " palabras.");
+    //console.log("Palabras: " + cantPalabras);
 }
-//https://www.programiz.com/javascript/async-await
-//https://stackoverflow.com/questions/32445323/jquery-replace-text-every-2-seconds-with-words-from-an-array
-const ImprimirTexto = async (Arraypalabra, interval, funcCallback) =>{
-    let i=0;
-    let intervalID = setInterval(()=>{    
-        i++;  
-        
-            (!(i < Arraypalabra.length)) && funcCallback(intervalID);
-            console.log(i); 
-            console.log(`Palabra: ${Arraypalabra[i % Arraypalabra.length]}`);  
-            
-    },interval)
 
-}
 
 let TextFunc = async (palabra, interval, funcCallback)=>{
-    interval = typeof(Interval) == "undefined" ? 1000 : Interval;    
-    let Arraypalabra = palabra.split(' ');
-    //await new Promise(resolve => setInterval(() => resolve(ImprimirTexto(Arraypalabra, interval, funcCallback)), interval));
-
-    try{
-        let word = await ImprimirTexto(Arraypalabra, interval, funcCallback);
-        console.log(100);
-    }catch(err){
-        console.log(err);
-    }
     
-    //let i = 0;
-    /*var i= i || 0;
-    let intervalID;
+    let Arraypalabra = palabra.split(' ');
+   
+      return await new Promise(resolve => {
+        let i=0;
+        let intervalSeg = (typeof(interval) == "undefined" || interval == null) ? 1000 : interval;   
+        console.log(intervalSeg);
 
-    if(i >= Arraypalabra.length){
-        funcCallback(intervalID);        
-    } else {
-        console.log(Arraypalabra[i]);
-        intervalID = setTimeout(TextFunc, interval, palabra, interval, ++i, funcCallback);
-    }*/
-
-    /*
-    let intervalID = setInterval(()=>{         
-        (!(i < Arraypalabra.length)) && funcCallback(intervalID);
-        console.log(`Palabra ${Arraypalabra[i % Arraypalabra.length]}`);  
-        i++;        
-    },interval)
-    */
+        const intervalo = setInterval(() => {
+          if (!(i < Arraypalabra.length)) {
+            resolve(funcCallback(intervalo, Arraypalabra.length));
+            clearInterval(intervalo);
+          }else{
+            console.log(Arraypalabra[i % Arraypalabra.length]);  
+          };
+          i++;  
+        }, intervalSeg);
+      });
 }
 
- TextFunc("Hola Mundo 2021", null, Finalizar);
- //TextFunc("Esta es otra prueba", null, Finalizar);
+ TextFunc("Hola Mundo 2021", 2000, Finalizar);
+ TextFunc("Esta es otra prueba", null, Finalizar);
