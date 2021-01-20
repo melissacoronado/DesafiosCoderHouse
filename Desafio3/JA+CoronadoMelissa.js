@@ -1,30 +1,30 @@
-let Finalizar = (intInterval, cantPalabras) =>{
-    clearInterval(intInterval);
+/*let Finalizar = (intInterval, cantPalabras) =>{
+    //clearInterval(intInterval);
     console.log("Proceso Completo! " + cantPalabras + " palabras.");
-    //console.log("Palabras: " + cantPalabras);
-}
+}*/
 
 
-let TextFunc = async (palabra, interval, funcCallback)=>{
-    
+let TextFunc = (palabra, interval=1000, callback)=>{
+    let i=0;
     let Arraypalabra = palabra.split(' ');
-   
-      return await new Promise(resolve => {
-        let i=0;
-        let intervalSeg = (typeof(interval) == "undefined" || interval == null) ? 1000 : interval;   
-        console.log(intervalSeg);
-
-        const intervalo = setInterval(() => {
-          if (!(i < Arraypalabra.length)) {
-            resolve(funcCallback(intervalo, Arraypalabra.length));
-            clearInterval(intervalo);
-          }else{
-            console.log(Arraypalabra[i % Arraypalabra.length]);  
-          };
-          i++;  
-        }, intervalSeg);
-      });
+    const intervalo = setInterval((ListaPalabras) => {
+        if (!(i < ListaPalabras.length)) {
+          clearInterval(intervalo);
+          callback(ListaPalabras.length);
+        }else{
+          console.log(ListaPalabras[i]);  
+          i++;
+        };
+          
+      }, interval, Arraypalabra);
+        
 }
+TextFunc("Hola Mundo 2021", 500, ( (cantP1) => {
+    let TotalPalabras = cantP1;
+    TextFunc("Esta es otra prueba", 500, ( (cantP2) => {
+        TotalPalabras += cantP2;
+        console.log(`Total Palabras: ${TotalPalabras}`);
+    }))
+}));
 
- TextFunc("Hola Mundo 2021", 2000, Finalizar);
- TextFunc("Esta es otra prueba", null, Finalizar);
+ 
