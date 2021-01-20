@@ -4,26 +4,33 @@
 }*/
 
 
-let TextFunc = (palabra, interval=1000, callback)=>{
-    let i=0;
-    let Arraypalabra = palabra.split(' ');
-    const intervalo = setInterval((ListaPalabras) => {
-        if (!(i < ListaPalabras.length)) {
+let TextFunc = (palabra, interval, callback)=>{
+  let i=0;
+  let intervalSeg = interval ||  1000;   
+  let Arraypalabra = palabra.split(' ');
+
+    const intervalo = setInterval(() => {
+        if (!(i < Arraypalabra.length)) {
           clearInterval(intervalo);
-          callback(ListaPalabras.length);
+          console.log(`${Arraypalabra.length}  palabras.`);
+          callback(Arraypalabra.length);
         }else{
-          console.log(ListaPalabras[i]);  
-          i++;
+          console.log(Arraypalabra[i]);            
         };
-          
-      }, interval, Arraypalabra);
+        i++;
+      }, intervalSeg);
         
 }
+
+
 TextFunc("Hola Mundo 2021", 500, ( (cantP1) => {
     let TotalPalabras = cantP1;
-    TextFunc("Esta es otra prueba", 500, ( (cantP2) => {
+    TextFunc("Esta es otra prueba", 700, ( (cantP2) => {
         TotalPalabras += cantP2;
-        console.log(`Total Palabras: ${TotalPalabras}`);
+        TextFunc("Una Nueva Palabra", null, ( (cantP3) => {
+          TotalPalabras += cantP3;
+          console.log(`Proceso Completo!. Total Palabras: ${TotalPalabras}`);
+        }))
     }))
 }));
 
