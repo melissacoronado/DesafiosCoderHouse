@@ -25,7 +25,7 @@
                     
                         //console.log('Event:', e)
                         if(e.key.length === 1 && (e.key.match(/[a-z]/i) || e.key.match(/^\d+$/)) || e.keyCode === 32){
-                            console.log('Key:', e.key)
+                            //console.log('Key:', e.key)
                             palabra += e.key;
                             if (palabra.toLowerCase().includes("error")){
                                 subscription.error("Observer finalizo por palabra error");
