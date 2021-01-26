@@ -1,5 +1,6 @@
 
 var http = require('http');
+let puerto = process.env.port || 8000;
 
 var server = http.createServer((req, res)=>{
     let nroAleatorio = Math.round(Math.random() * (10 - 0) + 0);
@@ -15,6 +16,6 @@ var server = http.createServer((req, res)=>{
     res.end(retorno);
 })
 
-server.listen(3500, function(){
+server.listen(puerto, function(){
     console.log(`Server listening on ${this.address().port}`);
 })
