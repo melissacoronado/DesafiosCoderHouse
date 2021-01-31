@@ -5,43 +5,62 @@ class Archivo{
     constructor(nombreArchivo){
         this.nombreArchivo = nombreArchivo;
     }
+      
+    async leer() {
+      try {        
+        const data = await fs.promises.readFile(path.resolve(__dirname, this.nombreArchivo), { encoding: 'utf8' })
+        return data;
+      } catch (error) {
+        return [];
+      }
+    }
 
-    leer() {
+    async guardar(File, nuevoProducto) {
+      try {         
+        nuevoProducto.id = File.length + 1;
+
+        File.push(nuevoProducto);
+        
+        const data = await fs.promises.writeFile(path.resolve(__dirname, this.nombreArchivo), JSON.stringify(File))
+        console.log("Archivo Guardado")
+      } catch (error) {
+        console.error("No se pudo Guardar el archivo")
+        //console.error(error)
+      }
+    }
+
+    async borrar() {
         try{
-            fs.stat(path.resolve(__dirname, this.nombreArchivo), (error, stats) => { 
-                if (error) { 
-                  console.log({}); 
-                } 
-                else {                 
-                    //console.log(stats);
-                    fs.readFile(path.resolve(__dirname, this.nombreArchivo), 'utf8', (err, content) => {
-                        if(err) return console.error(err); 
-                        
-                        //var obj = JSON.stringify(content);
-                        //var test = JSON.parse(obj);
-                        var obj = JSON.parse(content);
-                        var keyArray = Object.keys(obj); // key1
-                        console.log(obj[(keyArray[0])]); // value
-                        //console.log(obj[0].title);
-                    });
-                  // Using methods of the Stats object 
-                  //console.log("Path is file:", stats.isFile()); 
-                  //console.log("Path is directory:", stats.isDirectory()); 
-                } 
-            }); 
-        }catch(err){
-            console.error(err);
+          const data = await fs.promises.unlink(path.resolve(__dirname, this.nombreArchivo))
+          console.log("Archivo Borrado")
+        } catch (error) {
+          console.error("No se pudo Eliminar el archivo")
+          //console.error(error)
         }
-    }
-
-    guardar() {
-        return `Archivo: ${this.nombreArchivo}.`;
-    }
-
-    borrar() {
-        return `Archivo: ${this.nombreArchivo}.`;
     }
 }
 
-let prueba = new Archivo("productos.txt");
-prueba.leer(); 
+
+
+let FileOps = new Archivo("productos.txt");
+let archivo;
+
+let nuevoProducto = { 
+  "title": "Mi producto",
+  "price": 100,
+  "thumbnail": "https://cdn3.iconfinder.com/data/icons/education-209/64/globe-earth-geograhy-planet-school-256.png"
+};
+
+
+(async () => {
+  //Leer Archivo
+  archivo = await FileOps.leer();
+  console.log(archivo)
+
+  //Guardar Archivo
+  await FileOps.guardar(JSON.parse(archivo), nuevoProducto);
+  
+  //Borrar Archivo //DESCOMENTAR PARA PROBAR BORRAR
+  //await FileOps.borrar();
+
+})()
