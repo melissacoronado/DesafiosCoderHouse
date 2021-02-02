@@ -1,0 +1,28 @@
+--1.- Crear proyecto typescript
+tsc --init
+--2.- Inicialización de proyecto node
+npm init -y
+--3.- Instalar Express
+npm install express
+--4.- para el ambiente de desarrollo sin ncesidad de transpilar (ts-node) para mirar cambios (nodemon) + tipado de expess y de node
+npm install -D typescript nodemon ts-node @types/express @types/node
+--Definir scripts
+  "scripts": {
+    "start": "node js/server.js", --ajustar nombre del archivo principal
+    "dev": "nodemon ts/server.ts",
+    "build": "tsc -p ."
+  }
+--Correr por nodemon en desarrollo:
+npm run dev
+
+
+
+npm install nodemon -D (o "--save -dev")
+--
+
+
+
+//------ Instalar Express local
+npm i express
+
+
