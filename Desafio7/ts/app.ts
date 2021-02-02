@@ -13,13 +13,14 @@ interface Producto{
 }
 
 let productos:Producto[] = [];
+let getItems = 0;
+let getItemsRandom = 0;
 
-(async () => { debugger;
-    //Aqui quiero leer el txt que esta en db.ts que lo devolvi como un array.
+
+(async () => { 
+
     let BDproductos:[]  = await leerDB("productos.txt")
-    //o no se si seria let BDproductos:[]  = await leerDB("productos.txt")
 
-    //luego aqui queria era pasar el array al tipo Producto[] 
     productos = BDproductos.map((val: any) => <Producto>{
         id: val.id,
         title: val.title,
@@ -28,15 +29,34 @@ let productos:Producto[] = [];
 })()
 
 
-//En este get queria mostrar el listado de productos que lei arriba en await leerDB
-app.get('/', (req: Request, res: Response) => {
-    res.json(productos)
+app.get('/items', (req: Request, res: Response) => {   
+    getItems++;
+
+    res.json({ 
+        items: productos, 
+        cantidad: productos.length 
+    });
 })
 
-//este solo muestra la palabra get http://localhost:8080/items
-app.get('/items', (req: Request, res: Response) => {
-    res.send('Get');
+
+app.get('/item-random', (req: Request, res: Response) => {   
+    getItemsRandom++; 
+    const randomElement = productos[Math.floor(Math.random() * productos.length)];
+    res.json({ 
+        item: randomElement 
+    });
 })
+
+
+app.get('/visitas', (req: Request, res: Response) => {    
+
+    res.json({ 
+        visitas : { 
+            items: getItems, 
+            item: getItemsRandom } 
+    });
+})
+
 
 app.listen(8080, ()=> {
 
