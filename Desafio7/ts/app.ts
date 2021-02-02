@@ -28,6 +28,9 @@ let getItemsRandom = 0;
       });
 })()
 
+app.get('/', (req: Request, res: Response) => {   
+    res.send('Hola Visitante!')
+})
 
 app.get('/items', (req: Request, res: Response) => {   
     getItems++;
