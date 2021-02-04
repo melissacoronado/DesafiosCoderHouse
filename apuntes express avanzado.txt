@@ -1,0 +1,18 @@
+De Christian Nahuel Gigena para todos:  09:15 PM
+como importaba el module profe?
+mascotas
+router
+De Ruben Mavarez para todos:  09:15 PM
+module.exports = router
+De [Tutor] Malena Trejo para todos:  09:16 PM
+Y después lo requerís en la ruta del app.js:
+De Christian Nahuel Gigena para todos:  09:16 PM
+Gracias ruben
+De Hector Ester para todos:  09:16 PM
+es muy bueno para esconder  las rutas de la aplicación, no?
+De [Tutor] Malena Trejo para todos:  09:16 PM
+app.use(‘/ruta’, require(‘./rutas/mascotas’));
+
+
+
+npm i multer
