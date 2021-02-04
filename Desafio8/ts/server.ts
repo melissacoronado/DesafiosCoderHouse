@@ -17,13 +17,14 @@ app.get('/', (req: Request, res: Response) => {
     res.send(opsProd.showProducts())
 })
 
-app.get('/add', (req: Request, res: Response) => {   
+app.post('/add', (req: Request, res: Response) => {   
     let newProduct:Producto = {
         title: "Nuevo Prod",
         price: 100,
         thumbnail: "thum/ruta/algo/test.png"
     }
-    res.send(opsProd.addProduct(newProduct))
+    opsProd.addProduct(newProduct)
+    res.send("Producto agregado!")
 })
 
 app.listen(puerto, ()=> {
