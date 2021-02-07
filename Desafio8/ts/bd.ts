@@ -1,35 +1,30 @@
-export interface Producto{    
+export interface IProd{  
+    //Propiedades
+    id?: number  
     title:string
     price:number
     thumbnail:string
 }
 
-export class Operaciones {//implements  Producto{
-    //title: string = "";
-    //price: number = 0;
-    //thumbnail: string = "";
+interface IProducto{  
+    //Propiedades
+    productos:IProd[]
+    //Metodos
+    addProduct(producto: IProd): void;
+    showProducts(): void;
+}
 
-    private productos:Producto[] = [];
+export class Producto implements  IProducto{
+    productos:IProd[] = []
 
-    constructor(tit: string, price: number, thum: string){
-        //this.title = tit;
-        //this.price = price;    
-        //this.thumbnail = thum; 
-        let newProduct:Producto = {
-            title: tit,
-            price: price,
-            thumbnail: thum
-        }
-        this.productos = [...this.productos, newProduct] 
+
+    addProduct(producto: IProd) {
+        producto.id = this.productos.length + 1
+        //this.productos = [...this.productos, producto] 
+        this.productos.push(producto) 
     }
 
-    public addProduct(Producto: Producto) {
-        this.productos = [...this.productos, Producto] 
-    }
-
-    public showProducts() {
+    showProducts() {
         return this.productos;
     }
 }
-
- 
