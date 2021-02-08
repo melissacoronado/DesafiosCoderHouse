@@ -46,20 +46,6 @@ router.post('/productos', (req: Request, res: Response) => {
     }
 })
 
-router.post('/productos/addProduct', (req: Request, res: Response) => {  
-    try{    
-        const { title, price, thumbnail } = req.body  
-        //console.log(req.body)
-        //Falta validar que vengan todos los parametros              
-        const newProduct = { title, price, thumbnail }
-
-        opsProd.addProduct(newProduct)
-        res.status(201).send("Producto agregado!")        
-    }catch(error){
-        res.status(404).json({error : 'No se pudo agregar el Producto.'})
-    }
-})
-
 router.patch('/productos/actualizar/:id', (req: Request, res: Response) => { 
     try{    
         const id: number = +req.params.id //Viene de la url/1 y el + para parsear a numero
@@ -71,13 +57,10 @@ router.patch('/productos/actualizar/:id', (req: Request, res: Response) => {
 		if (productSelecc === null)
 			res.status(404).json({error : 'Producto no encontrado'})
         
-        
         const { title, price, thumbnail } = req.body  
-        productSelecc!.title = title
-        productSelecc!.price = price
-        productSelecc!.thumbnail = thumbnail		
+        opsProd.updateProducts(id, title, price, thumbnail)
         
-        res.status(204).json({Respuesta: "Producto Modificado!"})        
+        res.status(200).json({Respuesta: "Producto Modificado!"})        
     }catch(error){
         res.status(404).json({error : 'No se pudo modificar el Producto.'})
     }
@@ -93,8 +76,7 @@ router.delete('/productos/borrar/:id', (req: Request, res: Response) => {
 		if (product === null)
 			res.status(404).json({error : 'Producto no encontrado'})
 		
-        opsProd.productos = opsProd.productos.splice(id, 1);	//o psProd.productos = psProd.productos.filter(x => x.id !== id);
-
+        opsProd.deleteProduct(id)
         res.status(200).send('Producto Eliminado.')   
     }catch(error){
         res.status(404).json({error : 'No se pudo eliminar el Producto.'})
