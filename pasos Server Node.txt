@@ -1,12 +1,17 @@
 --1.- Crear proyecto typescript
 tsc --init
+	--Editar o descomentar valores en stconfig
+	--"target": "es6",
+	--"outDir": "./js", --la ruta donde tendremos los .js
+    --"rootDir": "./ts", --la ruta donde tenemos los .ts
+	--"moduleResolution": "node",
 --2.- Inicialización de proyecto node
 npm init -y
 --3.- Instalar Express
 npm install express
 --4.- para el ambiente de desarrollo sin ncesidad de transpilar (ts-node) para mirar cambios (nodemon) + tipado de expess y de node
 npm install -D typescript nodemon ts-node @types/express @types/node
---Definir scripts
+--Definir scripts en package.json --"scripts": { "test": "echo \"Error: no test specified\" && exit 1" por:
   "scripts": {
     "start": "node js/server.js", --ajustar nombre del archivo principal
     "dev": "nodemon ts/server.ts",
@@ -14,6 +19,9 @@ npm install -D typescript nodemon ts-node @types/express @types/node
   }
 --Correr por nodemon en desarrollo:
 npm run dev
+
+
+
 
 
 

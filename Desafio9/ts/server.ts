@@ -12,7 +12,7 @@ app.use(express.urlencoded({extended: true}))
 
 
 app.use('/api', RouterProductos);
-app.use('/public', express.static(__dirname + '/public'));
+app.use('/api', express.static(__dirname + '/public'));
 
 app.listen(puerto, ()=> {
     console.log('Servidor escuchando en puerto 8080')   

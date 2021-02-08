@@ -16,3 +16,41 @@ app.use(‘/ruta’, require(‘./rutas/mascotas’));
 
 
 npm i multer
+
+//Modificar Desafio 9
+app.patch('/productos/:id/title', (req: Request, res: Response) => {  //o quitar title y pasarlo como json - probar si sirve put y patch
+    try{    
+        const id: number = +req.params.id //Viene de la url/1 y el + para parsear a numero
+		const product =  opsProd.productos.find(x => x.id === id)
+		
+		if (product === null)
+			res.status(404).json({error : 'Producto no encontrado'})
+		
+		const { title, price, thumbnail } = req.body  
+		product.title = title
+		product.price = price
+		product.thumbnail = thumbnail		
+
+        res.status(204).send("Producto Modificado!")        
+    }catch(error){
+        res.status(404).json({error : 'No se pudo agregar el Producto.'})
+    }
+})
+
+//Eliminar Desafio 9
+app.delete('/productos/:id', (req: Request, res: Response) => {  
+    try{    
+        const id: number = +req.params.id //Viene de la url/1 y el + para parsear a numero
+		const product =  opsProd.productos.find(x => x.id === id)
+		
+		if (product === null)
+			res.status(404).json({error : 'Producto no encontrado'})
+		
+		psProd.productos = psProd.productos.splice(id, 1);	//o psProd.productos = psProd.productos.filter(x => x.id !== id);
+
+        res.status(200).json({error : 'Producto Eliminado.'})   
+    }catch(error){
+        res.status(404).json({error : 'No se pudo agregar el Producto.'})
+    }
+})
+
