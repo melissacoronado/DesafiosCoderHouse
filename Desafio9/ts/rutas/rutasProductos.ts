@@ -9,8 +9,9 @@ router.get('/productos', (req: Request, res: Response) => {
         const products =  opsProd.showProducts()
         if (products.length == 0){
             res.status(404).json({error : 'No hay productos cargados.'})
+        }else{
+            res.status(200).send(products)
         }
-        res.status(200).send(products)
     }catch(error){
         res.status(404).json({error : 'No se pudo obtener el listado de Productos.'})
     }
