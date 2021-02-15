@@ -8,7 +8,6 @@ let puerto = process.env.port || 8080;
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
 
-app.set('view engine', 'handlebars');
 
 app.use('/api', RouterProductos);
 app.use('/api', express.static(__dirname + '/public'));
