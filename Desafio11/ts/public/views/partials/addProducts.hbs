@@ -1,0 +1,24 @@
+<div class="row">
+    <h3 class="text-center">Agregar de Productos</h3>
+    </br>
+    <div class="row">
+        <a class="linkDerecha" href='/api/productos/vista'>Listado Producto</a>
+    </div>
+    <form action="/api/productos" method="POST" enctype="application/json">
+        <div class="form-group">
+            <label for="Title">Producto</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Nombre Producto">
+        </div>
+        <div class="form-group">
+            <label for="Price">Precio</label>
+            <input type="number" class="form-control" id="price" name="price" placeholder="0000">
+        </div>
+        <div class="form-group">
+            <label for="Thumbnail">Foto</label>
+            <input type="text" class="form-control" id="thumbnail" name="thumbnail" placeholder="Url Foto">
+        </div>
+        </br>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        
+    </form>
+</div> 
