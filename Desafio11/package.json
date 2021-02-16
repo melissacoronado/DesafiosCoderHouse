@@ -4,7 +4,7 @@
   "description": "Formato: link a un repositorio en Github con el proyecto cargado. \r Sugerencia: no incluir los node_modules",
   "main": "index.js",
   "scripts": {
-    "start": "node js/server.js", 
+    "start": "node js/server.js",
     "dev": "nodemon ts/server.ts",
     "build": "tsc -p ."
   },
@@ -12,7 +12,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "pug": "^3.0.0"
   },
   "devDependencies": {
     "@types/express": "^4.17.11",

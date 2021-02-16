@@ -2,7 +2,7 @@ import express, {Application, Request, Response} from 'express'
 //import * as fs from "fs"
 import path from 'path'
 import { RouterProductos } from './rutas/rutasProductos';
-const handlebars = require('express-handlebars');
+const pug = require('pug');
 
 const app:Application = express()
 /*const cors = require('cors')
@@ -17,15 +17,9 @@ app.use('/api', RouterProductos);
 
 
 
-//Sets handlebars configurations 
-app.engine('hbs', handlebars({
-    extname:".hbs",
-    defaultLayout:"index.hbs",
-    partialsDir: path.resolve(__dirname + '/public/views/partials/'),
-    layoutsDir: path.resolve(__dirname + '/public/views/layouts/'),
-}));
+
 app.set('views', path.resolve(__dirname + '/public/views/')); 
-app.set('view engine', 'hbs');
+app.set('view engine', 'pug');
 
 
 
