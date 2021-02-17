@@ -1,0 +1,23 @@
+extends ../layouts/index
+block content
+    div.row
+        h3.text-center Agregar de Productos
+        br
+        div.row
+            div.col-md-4
+            div.col-md-4
+                div.row
+                    a.linkDerecha(href='/api/productos/vista') Listado Producto
+                form(action='/api/productos', method='POST', enctype="application/json")
+                    div.form-group
+                        label(for="Title") Producto
+                        input.form-control(type="text", id="title", name="title", placeholder="Nombre Producto")
+                    div.form-group
+                        label(for="Price") Precio
+                        input.form-control(type="number", id="price", name="price", placeholder="0000")
+                    div.form-group
+                        label(for="Thumbnail") Foto
+                        input.form-control(type="text", id="thumbnail", name="thumbnail", placeholder="Url Foto")
+                    br
+                    button.btn.btn-primary(type="submit") Guardar 
+            div.col-md-4
