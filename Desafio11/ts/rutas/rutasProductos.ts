@@ -22,7 +22,7 @@ router.get('/productos', (req: Request, res: Response) => {
 router.get('/productos/vista', (req: Request, res: Response) => {  
     try{         
         //Serves the body of the page aka "main.handlebars" to the container //aka "index.handlebars"
-        res.render('partials/main', {layout : 'index', ListaProductos: opsProd.productos});
+        res.render('pages/index', {layout : 'index', ListaProductos: opsProd.productos});
     }catch(error){
         res.status(404).json({error : 'Error mostrando listado de Productos.'})
         console.log(error)
@@ -32,7 +32,7 @@ router.get('/productos/vista', (req: Request, res: Response) => {
 router.get('/productos/vistaAddProducto', (req: Request, res: Response) => {  
     try{         
         //Serves the body of the page aka "main.handlebars" to the container //aka "index.handlebars"
-        res.render('partials/addProducts', {layout : 'index' });
+        res.render('pages/addProducts', {layout : 'index' });
     }catch(error){
         res.status(404).json({error : 'Error mostrando listado de Productos.'})
         console.log(error)
@@ -65,7 +65,7 @@ router.post('/productos', (req: Request, res: Response) => {
         opsProd.addProduct(newProduct)
         //alert("Producto agregado!")
         //res.status(201).send("Producto agregado!")        
-        res.render('partials/addProducts', {layout : 'index'});
+        res.render('pages/addProducts');
     }catch(error){
         res.status(404).json({error : 'No se pudo agregar el Producto.'})
         console.log(error)

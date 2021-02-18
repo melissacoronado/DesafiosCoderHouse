@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="container">
+
+<header>
+    <%- include('../partials/header'); %>
+</header>
+
+<main>
+    <div class="table-responsive">       
+        <table class="table table-striped">
+            <thead>
+                <th class="col-md-4">Producto</th>
+                <th class="col-md-4">Precio</th>
+                <th class="col-md-4">Foto</th>
+            </thead>
+            <tbody>
+                <% if (ListaProductos.length > 0) { %>
+                    <% ListaProductos.forEach(function(producto) { %>
+                        <tr>
+                        <td class="middtext col-md-4"><%= producto.title %></td>
+                        <td class="middtext col-md-4"><%= producto.price %></td>
+                        <td class="middtext col-md-4"><img class="imgTbl img-fluid img-thumbnail" src="<%= producto.thumbnail %>"></td>
+                        </<tr>
+                    <% }); %>
+                <% }else{ %>
+                    <tr>
+                    <td colspan="3">No hay productos</td>            
+                    </<tr>
+                <% } %>
+            </tbody>
+        </table>
+    </div>
+</main>
+
+<footer>
+    <%- include('../partials/footer'); %>
+</footer>
+
+</body>
+</html>
