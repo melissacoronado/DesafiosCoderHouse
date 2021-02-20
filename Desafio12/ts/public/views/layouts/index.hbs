@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />  
+    <title>Sockets - API Productos</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        .imgTbl{
+            width: 35%;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Sockets - API Productos</a>
+        <ul class="navbar-nav mr-auto">
+        <li class="nav-item">
+            <a class="nav-link" href="/">Administración Productos</a>
+        </li>        
+        </ul>
+    </nav>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                {{{body}}}
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div> 
+    <script src="/socket.io/socket.io.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <!--<script src="../../scritps/funcs.js></script> -->
+
+    <script>
+        const socket = io();
+
+        $('#bttSaveProds').on('click', function(event) {
+            event.preventDefault();
+            
+            socket.emit('dataProds', {
+                title: $('#title').val(),
+                price: $('#price').val(),
+                thumbnail: $('#thumbnail').val()
+            });
+        });
+
+        socket.on('ProductoAgregado', data => {
+            console.log($("#tblProds tbody").length)
+            //Mostrar producto en la tabla
+            const { title, price, thumbnail } = data  
+            $("#tblProds").find('tbody')
+                         .append($('<tr>')
+                            .append($('<td>')
+                                .text(title)
+                            )
+                            .append($('<td>')
+                                .text(price)
+                            )
+                            .append($('<td>')
+                                .append($('<img>')
+                                    .attr('src', thumbnail)
+                                    .css('imgTbl img-fluid img-thumbnail')
+                                )
+                            )
+                         );
+        });
+    </script>
+</body>
+</html>

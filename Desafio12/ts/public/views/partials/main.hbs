@@ -1,0 +1,47 @@
+<div class="row">
+    <h3 class="text-center">Administración de Productos</h3>
+</div> 
+<div class="row">
+    <form action="" id="formProds" enctype="application/json">
+        <div class="form-group">
+            <label for="Title">Producto</label>
+            <input type="text" class="form-control" id="title" name="title" placeholder="Nombre Producto">
+        </div>
+        <div class="form-group">
+            <label for="Price">Precio</label>
+            <input type="number" class="form-control" id="price" name="price" placeholder="0000">
+        </div>
+        <div class="form-group">
+            <label for="Thumbnail">Foto</label>
+            <input type="text" class="form-control" id="thumbnail" name="thumbnail" placeholder="Url Foto">
+        </div>
+        <div class="text-center" style="margin-top: 2%;">
+            <button id="bttSaveProds" type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+        
+    </form>
+</div> 
+<div class="row">
+    <div class="table-responsive">
+        <table id="tblProds" class="table table-striped">
+            <thead>
+                <th class="col-md-4">Producto</th>
+                <th class="col-md-4">Precio</th>
+                <th class="col-md-4">Foto</th>
+            </thead>
+            <tbody>
+                {{#each ListaProductos}}
+                    <tr>
+                    <td class="middtext col-md-4">{{this.title}}</td>
+                    <td class="middtext col-md-4">{{this.price}}</td>
+                    <td class="middtext col-md-4"><img class="imgTbl img-fluid img-thumbnail" src="{{this.thumbnail}}"></td>
+                    </<tr>
+                {{else}}
+                    <tr>
+                    <td colspan="3">No hay productos</td>            
+                    </<tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
