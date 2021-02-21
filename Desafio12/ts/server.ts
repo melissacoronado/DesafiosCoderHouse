@@ -3,14 +3,13 @@ import express, {Application, Request, Response} from 'express'
 import path from 'path'
 import { RouterProductos } from './rutas/rutasProductos';
 
-
 const handlebars = require('express-handlebars');
-
-
 const app:Application = express()
 const http = require('http').Server(app)
-const io = require('socket.io')(http)
+const io = require('socket.io')(http, { autoConnect: false/*, transports: ['websocket']*/ })
 
+import { IProd, Producto } from './bd'
+export let opsProd = new Producto()
 
 let puerto = process.env.port || 8080;
 app.use('/api', express.static(__dirname + '/public')); //Al principio
@@ -31,7 +30,7 @@ app.engine('hbs', handlebars({
 app.set('views', path.resolve(__dirname + '/public/views/')); 
 app.set('view engine', 'hbs');
 
-app.set('socketio', io);
+//app.set('socketio', io);
 
 http.listen(puerto, ()=> {
     console.log('Servidor escuchando en puerto 8080')
@@ -40,16 +39,21 @@ http.listen(puerto, ()=> {
     console.log(err)
 })
 
-/*
-io.on('connection', (socket: Socket)=>{
-    console.log('usuario conectado')
-    socket.emit('socketMsg','Msj del servidor =)')
 
+
+io.on('connection', (socket: any) => {
+    let idSock = socket.id
+    console.log('A user connected' + socket.id);
+    //io.to(pickedUser).emit('taskRequest', req.body);
     socket.on('dataProds', (data: any) => {
-        console.log('entro en dataProds')
-        console.log(data)
-    }).on("error", (err: any)=>{
-        console.log(err)
+        const { title, price, thumbnail } = data  
+        const newProduct = { title, price, thumbnail }
+        opsProd.addProduct(newProduct)
+        console.log('entro dataProds');
+        socket.emit('ProductoAgregado', data);
     });
-})
-*/
+
+    socket.on('disconnect', () => {
+        console.log(`Disconnected ${idSock}`);
+    });
+});
