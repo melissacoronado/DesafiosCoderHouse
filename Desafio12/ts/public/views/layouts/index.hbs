@@ -40,7 +40,7 @@
 
         $('#bttSaveProds').on('click', function(event) {
             event.preventDefault();
-            
+
             socket.emit('dataProds', {
                 title: $('#title').val(),
                 price: $('#price').val(),
@@ -49,25 +49,30 @@
         });
 
         socket.on('ProductoAgregado', data => {
-            console.log($("#tblProds tbody").length)
+            console.log("retorno ProductoAgregado");
+            if($("#tblProds").find(' tbody tr:first')[0].innerText == "No hay productos"){
+                $("#tblProds tbody tr").remove(); 
+            }
             //Mostrar producto en la tabla
             const { title, price, thumbnail } = data  
             $("#tblProds").find('tbody')
-                         .append($('<tr>')
-                            .append($('<td>')
-                                .text(title)
-                            )
-                            .append($('<td>')
-                                .text(price)
-                            )
-                            .append($('<td>')
-                                .append($('<img>')
-                                    .attr('src', thumbnail)
-                                    .css('imgTbl img-fluid img-thumbnail')
-                                )
-                            )
-                         );
+                .append($('<tr>')
+                    .append($('<td>')
+                        .text(title)
+                    )
+                    .append($('<td>')
+                        .text(price)
+                    )
+                    .append($('<td>')
+                        .append($('<img>')
+                            .attr('src', thumbnail)
+                            .addClass('imgTbl img-fluid img-thumbnail')
+                        )
+                    )
+                );             
+            $('#title, #price, #thumbnail').val("")
         });
+            
     </script>
 </body>
 </html>

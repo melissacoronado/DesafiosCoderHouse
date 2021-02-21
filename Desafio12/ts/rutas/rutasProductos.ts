@@ -1,11 +1,16 @@
 import express, {Application, Request, Response} from 'express'
 import { copyFileSync } from 'fs'
 import { IProd, Producto } from '../bd'
+
+import { opsProd } from '../server'
+
+
 var router = express.Router()
 
+//let opsProd = new Producto()
 
 
-let opsProd = new Producto()
+
 
 router.get('/productos', (req: Request, res: Response) => {  
     try{        
@@ -22,19 +27,18 @@ router.get('/productos', (req: Request, res: Response) => {
 
 router.get('/productos/vista', (req: Request, res: Response) => {  
     try{         
-        var io = req.app.get('socketio');//
-        io.on('connection', function (socket: any) {
-            console.log('A user connected');
+        /*var io = req.app.get('socketio');//
+        io.on('connection', (socket: any) => {
+            console.log('A user connected' + socket.id);
             //io.to(pickedUser).emit('taskRequest', req.body);
             socket.on('dataProds', (data: any) => {
                 const { title, price, thumbnail } = data  
                 const newProduct = { title, price, thumbnail }
                 opsProd.addProduct(newProduct)
                 console.log('entro dataProds');
-                socket.emit('ProductoAgregado', data);
+                socket.broadcast.emit('ProductoAgregado', data);
             });
-        });
-
+        });*/
         res.render('partials/main', {layout : 'index', ListaProductos: opsProd.productos});
     }catch(error){
         res.status(404).json({error : 'Error mostrando listado de Productos.'})
@@ -72,6 +76,7 @@ router.get('/productos/:id', (req: Request, res: Response) => {
 
 router.post('/productos', (req: Request, res: Response) => {  
     try{    
+        console.log('post productos');
         const { title, price, thumbnail } = req.body  
         
         //Falta validar que vengan todos los parametros              
