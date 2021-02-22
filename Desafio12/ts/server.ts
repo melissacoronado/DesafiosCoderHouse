@@ -44,13 +44,12 @@ http.listen(puerto, ()=> {
 io.on('connection', (socket: any) => {
     let idSock = socket.id
     console.log('A user connected' + socket.id);
-    //io.to(pickedUser).emit('taskRequest', req.body);
+
     socket.on('dataProds', (data: any) => {
         const { title, price, thumbnail } = data  
         const newProduct = { title, price, thumbnail }
         opsProd.addProduct(newProduct)
-        console.log('entro dataProds');
-        socket.emit('ProductoAgregado', data);
+        io.emit('ProductoAgregado', data);
     });
 
     socket.on('disconnect', () => {
