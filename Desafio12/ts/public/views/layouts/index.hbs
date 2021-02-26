@@ -49,7 +49,7 @@
         });
 
         socket.on('ProductoAgregado', data => {
-            console.log("retorno ProductoAgregado");
+
             if($("#tblProds").find(' tbody tr:first')[0].innerText == "No hay productos"){
                 $("#tblProds tbody tr").remove(); 
             }

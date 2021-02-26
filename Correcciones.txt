@@ -1,0 +1,11 @@
+Meli! El desafío está aprobado. 
+
+Te señalo dos cosas:
+
+
+
+1) insisto sobre esta idea de definir las rutas de datos (de api, pongamos) por un lado, en una carpeta, y las rutas que renderizan vistas por otro. Es cierto que estás definiendo ambas clases de métodos en una misma clase, pero no hay problema en que hagas un import del módulo en cada archivo de rutas. Esto ahora parece trivial, pero cuando el proyecto escale, va a ser importante.
+
+
+
+2) A la hora de modularizar la vista, lo ideal es definir en un partial TODO el footer, TODO el header, y así, sin dejar las etiquetas como marco en la plantilla padre (al estilo de lo que hacemos en los componentes de react).
