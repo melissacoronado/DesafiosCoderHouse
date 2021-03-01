@@ -9,3 +9,36 @@ Te señalo dos cosas:
 
 
 2) A la hora de modularizar la vista, lo ideal es definir en un partial TODO el footer, TODO el header, y así, sin dejar las etiquetas como marco en la plantilla padre (al estilo de lo que hacemos en los componentes de react).
+
+
+Gente! cómo va?
+Ahí estamos hablando con Mauro; dado que cada entrega está siendo una complicación de la anterior, se nos ocurrió esto:
+Qué les parece si esta entrega (y las siguientes que sean así, complicación del código anterior) la hacen como ramas nuevas en git?
+white_check_mark
+eyes
+raised_hands
+
+
+
+
+
+10:36
+Es decir, al proyecto que ya mandaron para el último desafío, le agregan una rama nueva "desafío13" y corrijo ahí; y así
+:+1:
+2
+
+10:36
+nada, tiro la idea; me parece que puede empezar a ser más práctico, pero queda a criterio de ustedes!
+10:36
+Sí les pido, no entregar en forma de commits, porque es un bardo ir y venir entre commits
+10:40
+Otro tema, pensando en que empieza la construcción del proyecto.
+10:40
+Vieron que todavía no estamos trabajando con base de datos real, sino con arreglos de objetos
+10:42
+hay un tema ahi con la asignación del id: en general, están contando el total de elementos del objeto y le suman 1 como id del nuevo elemento, o generan un id random. Esto no se los marqué antes porque pensé que llegábamos a ver db antes, pero son dos métodos que van a traer problemas: en ambos casos, se corre el riesgo de tener repeticiones (porque el array se acorta, y entonces suman 1 a un número "viejo", o porque el número random se repite)
+10:42
+Lo que les recomiendo es simular la lógica de la db: capturen el último elemento del array, tomen su id, y sumen 1 a ese elemento
+10:43
+no se me ocurre una instancia en que vayan a incrustar objetos en el array en otra posición que no sea la última; así que esa sería la mejor forma de evitar errores.
+Si se les ocurre otra, traiganla!

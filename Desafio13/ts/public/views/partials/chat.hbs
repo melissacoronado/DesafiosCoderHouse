@@ -1,0 +1,17 @@
+<div class="row">
+    <h3 class="text-center">Centro de Mensajes</h3>
+    <div class="form-group mrgBtt">
+        <input type="text" autocomplete="false" class="form-control" id="correo" name="correo" placeholder="correo@dominio.com">
+    </div>
+    <hr/>
+</div> 
+<div class="row">
+    <div id="chatBox" name="chatBox" class="mrgBtt">
+        <ul id="ListChatMsg">
+            {{#each ListaMsjChat}}
+    </div>
+    <div class="input-group mb-3">
+        <input type="text" class="form-control" id="msg" name="msg" placeholder="Ingresa un Mensaje">
+        <button class="btn btn-outline-primary" type="button" id="bttSendMsg">Enviar</button>
+    </div>
+</div>
