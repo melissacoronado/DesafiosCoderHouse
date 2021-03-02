@@ -6,5 +6,5 @@ Sugerencia: no incluir los node_modules
 >> Aspectos a incluir en el entregable:
 Instalar Babel y Typescript como dependencias de desarrollo y crear dos script en el package.json llamados ServerES6toJS5 y ServerTStoJS5, que permitan lanzar los procesos automáticos de conversiones respectivas sobre los archivo del servidor creados (server.es6.js y server.ts) a JS5. Los archivos de salida en ambos casos se llamarán server.js.
 Adecuar el proyecto y los módulos importados para permitir compatibilidades de importación y exportación.
-Probar que el servidor funcione correctamente en ambos casos.![image](https://user-images.githubusercontent.com/65875260/109586211-93287880-7ae3-11eb-9def-94d20bd5278d.png)
+Probar que el servidor funcione correctamente en ambos casos.
 
