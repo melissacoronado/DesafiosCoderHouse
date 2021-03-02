@@ -1,6 +1,6 @@
 import express, {Application, Request, Response} from 'express'
 import { copyFileSync } from 'fs'
-import { IProd, Producto } from '../bd'
+import { IProd, Producto } from '../bd/bd'
 
 import { opsProd } from '../server'
 

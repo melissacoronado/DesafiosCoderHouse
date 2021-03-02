@@ -1,15 +1,17 @@
 import express, {Application, Request, Response} from 'express'
 import { copyFileSync } from 'fs'
-import { IProd, Producto } from '../bd'
+import { IProd, Producto } from '../bd/bd'
+import { IChat, ChatMsg } from '../bd/archivos'
 
-import { opsProd } from '../server'
+import { opsProd, opsChat, HistoryMensajesChat } from '../server'
 
 
 var router = express.Router()
 
 router.get('/productos/vista', (req: Request, res: Response) => {  
-    try{         
-        res.render('partials/main', {layout : 'index', ListaProductos: opsProd.productos});
+    try{    
+        //console.log(HistoryMensajesChat)
+        res.render('partials/main', {layout : 'index', ListaProductos: opsProd.productos, ListaMsjChat: opsChat.ChatMessages});
     }catch(error){
         res.status(404).json({error : 'Error mostrando listado de Productos.'})
         console.log(error)

@@ -15,7 +15,7 @@
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6">
-                {{> chat }}
+                {{> chat ListaMensajesChat=this.ListaMsjChat }}
             </div>
             <div class="col-md-3"></div>
         </div>
@@ -26,19 +26,28 @@
 
     <script>
         const socket = io();
-
+        let usermail = "";
         //Chat
         $('#bttSendMsg').on('click', function(event) {
-            if($('#correo').val() !== "" && $('#msg').val() !== ""){
-                let date = new Date(Date.now());
-                date = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
-                socket.emit('New chatMsg', {
-                    msg: $('#msg').val(),
-                    mail: $('#correo').val(),
-                    time: date
-                });
+            if($('#msg').val() !== ""){
+                if(usermail == ""){
+                    if($('#correo').val()!==""){
+                        usermail =  $('#correo').val();
+                    }
+                }
+                if(usermail!==""){
+                    let date = new Date(Date.now());
+                    date = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+                    socket.emit('New chatMsg', {
+                        msg: $('#msg').val(),
+                        mail: usermail,
+                        time: date
+                    });
+                }else{
+                    alert("Debe ingrear un correo para enviar mensajes.");
+                }
             }else{
-                alert("Debe ingrear un correo para enviar mensajes.");
+                alert("Debe ingrear un mensaje para enviar.");
             }
         });
 
@@ -50,7 +59,7 @@
                                      )
                                      .append($('<span>')
                                              .addClass('timeChat')
-                                             .text(`[${data.timeMessage}]: `)
+                                             .text(`[${data.time}]: `)
                                      )
                                      .append($('<span>')
                                              .addClass('msjChat')
