@@ -39,8 +39,6 @@ _asyncToGenerator(function* () {
   opsChat.ChatMessagess = yield opsChat.getMessages();
 })();
 
-console.log(opsChat.ChatMessagess+ " 100");
-
 var puerto = process.env.port || 8080;
 app.use('/api', express.static(__dirname + '/public')); //Al principio
 
