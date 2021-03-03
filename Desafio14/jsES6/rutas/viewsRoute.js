@@ -7,6 +7,10 @@ const ChatMsg = require('../bd/archivos')
 let opsProd = new Producto()
 let opsChat = new ChatMsg("chatBD.txt")
 
+(async () => { 
+    opsChat.ChatMessagess = await opsChat.getMessages()            
+})()
+
 var router = express.Router()
 
 router.get('/productos/vista', (req, res) => {  

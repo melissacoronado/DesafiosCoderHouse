@@ -12,14 +12,19 @@ class ChatMsg {
     try {  
       const data = await fs.promises.readFile(path.resolve(__dirname, this.FileName), { encoding: 'utf8' })
       let arrayMsj = JSON.parse(data);
-      let ChatMsg = arrayMsj.map((val) => {
-        val.mail,
-        val.time,
-        val.message
+
+      var ChatMsg = arrayMsj.map((data)=>{ 
+        return {
+          mail:data.mail, 
+          time:data.time,
+          message: data.message
+        }; 
       });
+      
       return ChatMsg;
       
     } catch (error) {
+      console.log(error);
       console.log('Error Obteniendo datos de .txt')
       return [];
     }

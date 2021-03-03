@@ -72,8 +72,8 @@ io.on('connection', (socket) => {
         //Guardar en el archivo txt
         
         const newMsg = { mail: mail, 
-                               time: time, 
-                               message: msg  }
+                        time: time, 
+                        message: msg  }
         opsChat.addMessage(newMsg)
 
         //Emit para mostrar en la lista

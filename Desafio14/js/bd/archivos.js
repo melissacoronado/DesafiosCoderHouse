@@ -17,15 +17,17 @@ class ChatMsg {
         var data = yield fs.promises.readFile(path.resolve(__dirname, _this.FileName), {
           encoding: 'utf8'
         });
-        console.log(100);
         var arrayMsj = JSON.parse(data);
-
-        var _ChatMsg = arrayMsj.map(function (val) {
-          val.mail, val.time, val.message;
+        var ChatMsg = arrayMsj.map(function (data) {
+          return {
+            mail: data.mail,
+            time: data.time,
+            message: data.message
+          };
         });
-
-        return _ChatMsg;
+        return ChatMsg;
       } catch (error) {
+        console.log(error);
         console.log('Error Obteniendo datos de .txt');
         return [];
       }
