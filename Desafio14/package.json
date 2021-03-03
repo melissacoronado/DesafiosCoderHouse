@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node js/server.js",
     "dev": "nodemon js/server.js",
-    "build": "babel ./jsES6/ServerES6toJS5.js -o ./js/server.js",
+    "build": "babel ./jsES6/server.js -o ./js/server.js",
     "builddir": "babel ./jsES6 --out-dir js --ignore ./jsES6/ServerES6toJS5.js"
     , "test":"babel ./jsES6/bd/bd.js -o ./js/bd/bd.js"
   },

@@ -1,10 +1,12 @@
 "use strict";
 
-var express = require('express');
+var express = require('express'); //const opsProd = require('../server')
 
-var opsProd = require('../server');
+
+var Producto = require('../bd/bd');
 
 var router = express.Router();
+var opsProd = new Producto();
 router.get('/', (req, res) => {
   try {
     var products = opsProd.showProducts();

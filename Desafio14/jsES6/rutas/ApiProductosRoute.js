@@ -1,7 +1,8 @@
 const express = require('express')
-const opsProd = require('../server')
+//const opsProd = require('../server')
+const Producto = require('../bd/bd')
 var router = express.Router()
-
+let opsProd = new Producto()
 
 router.get('/', (req, res) => {  
     try{        

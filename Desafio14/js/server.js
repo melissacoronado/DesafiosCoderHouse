@@ -36,7 +36,7 @@ var HistoryMensajesChat = [];
 module.exports = HistoryMensajesChat;
 
 _asyncToGenerator(function* () {
-  opsChat.ChatMessages = yield opsChat.getMessages();
+  opsChat.ChatMessagess = yield opsChat.getMessages();
 })();
 
 var puerto = process.env.port || 8080;

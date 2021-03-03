@@ -17,6 +17,7 @@ class ChatMsg {
         var data = yield fs.promises.readFile(path.resolve(__dirname, _this.FileName), {
           encoding: 'utf8'
         });
+        console.log(100);
         var arrayMsj = JSON.parse(data);
 
         var _ChatMsg = arrayMsj.map(function (val) {
@@ -35,7 +36,7 @@ class ChatMsg {
         try {
           _this.ChatMessagess.push(nuevoMsg);
 
-          var data = yield fs.promises.writeFile(path.resolve(__dirname, _this.FileName), JSON.stringify(_this.ChatMessages));
+          var data = yield fs.promises.writeFile(path.resolve(__dirname, _this.FileName), JSON.stringify(_this.ChatMessagess));
           console.log("Archivo Guardado");
         } catch (error) {
           console.error("No se pudo Guardar el archivo");

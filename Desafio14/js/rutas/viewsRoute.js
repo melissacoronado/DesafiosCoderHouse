@@ -1,11 +1,15 @@
 "use strict";
 
-var express = require('express');
+var express = require('express'); //const opsProd = require('../server')
+//const opsChat = require('../server')
 
-var opsProd = require('../server');
 
-var opsChat = require('../server');
+var Producto = require('../bd/bd');
 
+var ChatMsg = require('../bd/archivos');
+
+var opsProd = new Producto();
+var opsChat = new ChatMsg("chatBD.txt");
 var router = express.Router();
 router.get('/productos/vista', (req, res) => {
   try {
@@ -13,7 +17,7 @@ router.get('/productos/vista', (req, res) => {
     res.render('partials/main', {
       layout: 'index',
       ListaProductos: opsProd.productos,
-      ListaMsjChat: opsChat.ChatMessages
+      ListaMsjChat: opsChat.ChatMessagess
     });
   } catch (error) {
     res.status(404).json({
