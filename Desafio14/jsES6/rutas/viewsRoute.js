@@ -1,7 +1,4 @@
 const express = require('express')
-const copyFileSync = require('fs')
-const Producto = require('../bd/bd')
-const ChatMsg = require('../bd/archivos')
 const opsProd = require('../server')
 const opsChat = require('../server')
 
@@ -11,7 +8,7 @@ var router = express.Router()
 router.get('/productos/vista', (req, res) => {  
     try{    
         //console.log(HistoryMensajesChat)
-        res.render('partials/main', {layout : 'index', ListaProductos: opsProd.productos, ListaMsjChat: opsChat.ChatMessages});
+        res.render('partials/main', {layout : 'index', ListaProductos: opsProd.productos, ListaMsjChat: opsChat.ChatMessagess});
     }catch(error){
         res.status(404).json({error : 'Error mostrando listado de Productos.'})
         console.log(error)

@@ -1,10 +1,5 @@
 const express = require('express')
-const copyFileSync = require('fs')
-const Producto = require('../bd/bd')
-
 const opsProd = require('../server')
-
-
 var router = express.Router()
 
 

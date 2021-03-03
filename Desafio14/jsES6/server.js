@@ -17,9 +17,10 @@ module.exports = opsProd
 let opsChat = new ChatMsg("chatBD.txt")
 module.exports = opsChat
 let HistoryMensajesChat = [];
-module.exports = HistoryMensajesChat
+module.exports = HistoryMensajesChat;
+
 (async () => { 
-    opsChat.ChatMessages = await opsChat.getMessages()            
+    opsChat.ChatMessagess = await opsChat.getMessages()            
 })()
 
 let puerto = process.env.port || 8080;

@@ -3,7 +3,7 @@ const path = require('path')
 
 class ChatMsg {
   constructor(nombreArchivo){
-      this.ChatMessages = []
+      this.ChatMessagess = []
       this.FileName = nombreArchivo;
   }
 
@@ -28,9 +28,9 @@ class ChatMsg {
   addMessage = async (nuevoMsg) => {
       try {         
 
-        this.ChatMessages.push(nuevoMsg);
+        this.ChatMessagess.push(nuevoMsg);
         
-        const data = await fs.promises.writeFile(path.resolve(__dirname, this.FileName), JSON.stringify(this.ChatMessages))
+        const data = await fs.promises.writeFile(path.resolve(__dirname, this.FileName), JSON.stringify(this.ChatMessagess))
         console.log("Archivo Guardado")
       } catch (error) {
         console.error("No se pudo Guardar el archivo")
