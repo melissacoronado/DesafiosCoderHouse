@@ -1,14 +1,14 @@
-import express, {Application, Request, Response} from 'express'
-import { copyFileSync } from 'fs'
-import { IProd, Producto } from '../bd/bd'
-import { IChat, ChatMsg } from '../bd/archivos'
-
-import { opsProd, opsChat, HistoryMensajesChat } from '../server'
+const express = require('express')
+const copyFileSync = require('fs')
+const Producto = require('../bd/bd')
+const ChatMsg = require('../bd/archivos')
+const opsProd = require('../server')
+const opsChat = require('../server')
 
 
 var router = express.Router()
 
-router.get('/productos/vista', (req: Request, res: Response) => {  
+router.get('/productos/vista', (req, res) => {  
     try{    
         //console.log(HistoryMensajesChat)
         res.render('partials/main', {layout : 'index', ListaProductos: opsProd.productos, ListaMsjChat: opsChat.ChatMessages});
@@ -18,7 +18,7 @@ router.get('/productos/vista', (req: Request, res: Response) => {
     }
 })
 
-router.post('/productos', (req: Request, res: Response) => {  
+router.post('/productos', (req, res) => {  
     try{    
         console.log('post productos');
         const { title, price, thumbnail } = req.body  
@@ -35,4 +35,5 @@ router.post('/productos', (req: Request, res: Response) => {
     }
 })
 
-export const RouterViewsProductos: express.Router = router;
+const RouterViewsProductos = router;
+module.exports = RouterViewsProductos

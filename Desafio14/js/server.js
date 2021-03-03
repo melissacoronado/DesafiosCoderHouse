@@ -1,85 +1,108 @@
-"use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
-Object.defineProperty(exports, "__esModule", { value: true });
-exports.HistoryMensajesChat = exports.opsChat = exports.opsProd = void 0;
-const express_1 = __importDefault(require("express"));
-const path_1 = __importDefault(require("path"));
-const ApiProductosRoute_1 = require("./rutas/ApiProductosRoute");
-const viewsRoute_1 = require("./rutas/viewsRoute");
-const bd_1 = require("./bd/bd");
-const archivos_1 = require("./bd/archivos");
-const handlebars = require('express-handlebars');
-const app = express_1.default();
-const http = require('http').Server(app);
-const io = require('socket.io')(http, { autoConnect: false /*, transports: ['websocket']*/ });
-exports.opsProd = new bd_1.Producto();
-exports.opsChat = new archivos_1.ChatMsg("chatBD.txt");
-exports.HistoryMensajesChat = [];
-(() => __awaiter(void 0, void 0, void 0, function* () {
-    exports.opsChat.ChatMessages = yield exports.opsChat.getMessages();
-}))();
-let puerto = process.env.port || 8080;
-app.use('/api', express_1.default.static(__dirname + '/public')); //Al principio
-app.use(express_1.default.json());
-app.use(express_1.default.urlencoded({ extended: true }));
-app.use('/api', viewsRoute_1.RouterViewsProductos);
-app.use('/api/productos', ApiProductosRoute_1.RouterApiProductos);
-//app.use("/scripts", express.static(__dirname + '/public/scripts'));
+'use strict';
+
+function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
+
+var Socket = require('dgram');
+var express = require('express');
+var path = require('path');
+var RouterApiProductos = require('./rutas/ApiProductosRoute');
+var RouterViewsProductos = require('./rutas/viewsRoute');
+var Producto = require('./bd/bd');
+var ChatMsg = require('./bd/archivos');
+
+var handlebars = require('express-handlebars');
+var app = express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http, { autoConnect: false });
+
+var opsProd = new Producto();
+module.exports = opsProd;
+var opsChat = new ChatMsg("chatBD.txt");
+module.exports = opsChat;
+var HistoryMensajesChat = [];
+module.exports = HistoryMensajesChat(_asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+    return regeneratorRuntime.wrap(function _callee$(_context) {
+        while (1) {
+            switch (_context.prev = _context.next) {
+                case 0:
+                    _context.next = 2;
+                    return opsChat.getMessages();
+
+                case 2:
+                    opsChat.ChatMessages = _context.sent;
+
+                case 3:
+                case 'end':
+                    return _context.stop();
+            }
+        }
+    }, _callee, undefined);
+})))();
+
+var puerto = process.env.port || 8080;
+app.use('/api', express.static(__dirname + '/public')); //Al principio
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
+app.use('/api', RouterViewsProductos);
+app.use('/api/productos', RouterApiProductos);
+
 //Sets handlebars configurations 
 app.engine('hbs', handlebars({
     extname: ".hbs",
     defaultLayout: "index.hbs",
-    partialsDir: path_1.default.resolve(__dirname + '/public/views/partials/'),
-    layoutsDir: path_1.default.resolve(__dirname + '/public/views/layouts/'),
+    partialsDir: path.resolve(__dirname + '/public/views/partials/'),
+    layoutsDir: path.resolve(__dirname + '/public/views/layouts/')
 }));
-app.set('views', path_1.default.resolve(__dirname + '/public/views/'));
+app.set('views', path.resolve(__dirname + '/public/views/'));
 app.set('view engine', 'hbs');
-//app.set('scripts', express.static(path.resolve(__dirname + '/public/scripts/'))); 
-//app.set('socketio', io);
-http.listen(puerto, () => {
+
+http.listen(puerto, function () {
     console.log('Servidor escuchando en puerto 8080');
-}).on("error", (err) => {
+}).on("error", function (err) {
     console.log(err);
 });
-io.on('connection', (socket) => {
-    let idSock = socket.id;
-    let addedMail = false;
+
+io.on('connection', function (socket) {
+    var idSock = socket.id;
+    var addedMail = false;
     console.log('A user connected' + socket.id);
+
     //chat
-    socket.on('New chatMsg', (data) => {
+    socket.on('New chatMsg', function (data) {
         //Leer data
-        const { mail, msg, time } = data;
+        var mail = data.mail,
+            msg = data.msg,
+            time = data.time;
+
         //Agregar usuario- asociar correo con socket
+
         if (!addedMail) {
             socket.mail = mail;
         }
+
         //Guardar en el archivo txt
-        const newMsg = { mail: mail,
+
+        var newMsg = { mail: mail,
             time: time,
             message: msg };
-        exports.opsChat.addMessage(newMsg);
+        opsChat.addMessage(newMsg);
+
         //Emit para mostrar en la lista
         io.emit('new message', newMsg);
     });
+
     //Productos
-    socket.on('dataProds', (data) => {
-        const { title, price, thumbnail } = data;
-        const newProduct = { title, price, thumbnail };
-        exports.opsProd.addProduct(newProduct);
+    socket.on('dataProds', function (data) {
+        var title = data.title,
+            price = data.price,
+            thumbnail = data.thumbnail;
+
+        var newProduct = { title: title, price: price, thumbnail: thumbnail };
+        opsProd.addProduct(newProduct);
         io.emit('ProductoAgregado', data);
     });
-    socket.on('disconnect', () => {
-        console.log(`Disconnected ${idSock}`);
+
+    socket.on('disconnect', function () {
+        console.log('Disconnected ' + idSock);
     });
 });

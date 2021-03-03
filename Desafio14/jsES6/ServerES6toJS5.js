@@ -3,8 +3,8 @@ const express = require('express')
 const path = require('path')
 const RouterApiProductos = require('./rutas/ApiProductosRoute')
 const RouterViewsProductos = require('./rutas/viewsRoute')
-const IProd, Producto = require('./bd/bd')
-const IChat, ChatMsg = require('./bd/archivos')
+const Producto = require('./bd/bd')
+const ChatMsg = require('./bd/archivos')
 
 const handlebars = require('express-handlebars');
 const app = express()
@@ -12,9 +12,12 @@ const http = require('http').Server(app)
 const io = require('socket.io')(http, { autoConnect: false })
 
 
-export let opsProd = new Producto()
-export let opsChat = new ChatMsg("chatBD.txt")
-export let HistoryMensajesChat = [];
+let opsProd = new Producto()
+module.exports = opsProd
+let opsChat = new ChatMsg("chatBD.txt")
+module.exports = opsChat
+let HistoryMensajesChat = [];
+module.exports = HistoryMensajesChat
 (async () => { 
     opsChat.ChatMessages = await opsChat.getMessages()            
 })()

@@ -1,14 +1,14 @@
-import express, {Application, Request, Response} from 'express'
-import { copyFileSync } from 'fs'
-import { IProd, Producto } from '../bd/bd'
+const express = require('express')
+const copyFileSync = require('fs')
+const Producto = require('../bd/bd')
 
-import { opsProd } from '../server'
+const opsProd = require('../server')
 
 
 var router = express.Router()
 
 
-router.get('/', (req: Request, res: Response) => {  
+router.get('/', (req, res) => {  
     try{        
         const products =  opsProd.showProducts()
         if (products.length == 0){
@@ -22,9 +22,9 @@ router.get('/', (req: Request, res: Response) => {
 })
 
 
-router.get('/:id', (req: Request, res: Response) => {  
+router.get('/:id', (req, res) => {  
     try{
-        const id: number = +req.params.id //Viene de la url/1 y el + para parsear a numero
+        const id = +req.params.id //Viene de la url/1 y el + para parsear a numero
         const product =  opsProd.productos.find(x => x.id === id)
 
         if (opsProd.productos.length == 0)
@@ -39,9 +39,9 @@ router.get('/:id', (req: Request, res: Response) => {
     }
 })
 
-router.patch('/actualizar/:id', (req: Request, res: Response) => { 
+router.patch('/actualizar/:id', (req, res) => { 
     try{    
-        const id: number = +req.params.id //Viene de la url/1 y el + para parsear a numero
+        const id = +req.params.id //Viene de la url/1 y el + para parsear a numero
         
         if (opsProd.productos.length == 0)
             res.status(404).json({error : 'No hay productos cargados'})
@@ -59,9 +59,9 @@ router.patch('/actualizar/:id', (req: Request, res: Response) => {
     }
 })
 
-router.delete('/borrar/:id', (req: Request, res: Response) => {  
+router.delete('/borrar/:id', (req, res) => {  
     try{    
-        const id: number = +req.params.id 
+        const id = +req.params.id 
         if (opsProd.productos.length == 0)
             res.status(404).json({error : 'No hay productos cargados'})
 
@@ -78,6 +78,5 @@ router.delete('/borrar/:id', (req: Request, res: Response) => {
 
 
 
-
-
-export const RouterApiProductos: express.Router = router;
+const RouterApiProductos = router;
+module.exports = RouterApiProductos
