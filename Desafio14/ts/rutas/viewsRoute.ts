@@ -1,5 +1,4 @@
-import * as express from 'express'
-import {Application, Request, Response} from 'express'
+import express, {Application, Request, Response} from 'express'
 import { copyFileSync } from 'fs'
 import { IProd, Producto } from '../bd/bd'
 import { IChat, ChatMsg } from '../bd/archivos'

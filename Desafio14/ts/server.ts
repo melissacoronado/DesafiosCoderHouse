@@ -1,14 +1,13 @@
 import { Socket } from 'dgram';
-import * as express from 'express';
-import {Application, Request, Response} from 'express'
-import * as path from 'path'
+import express, {Application, Request, Response} from 'express'
+import path from 'path'
 import { RouterApiProductos } from './rutas/ApiProductosRoute';
 import { RouterViewsProductos } from './rutas/viewsRoute';
 import { IProd, Producto } from './bd/bd'
 import { IChat, ChatMsg } from './bd/archivos'
 
 const handlebars = require('express-handlebars');
-const app:Application = express.default();
+const app:Application = express()
 const http = require('http').Server(app)
 const io = require('socket.io')(http, { autoConnect: false/*, transports: ['websocket']*/ })
 

@@ -1,16 +1,20 @@
 --1.- Crear proyecto typescript
 tsc --init
-	--Editar o descomentar valores en stconfig
+	--Editar o descomentar valores en tsconfig
 	--"target": "es6",
 	--"outDir": "./js", --la ruta donde tendremos los .js
     --"rootDir": "./ts", --la ruta donde tenemos los .ts
 	--"moduleResolution": "node",
+	
 --2.- Inicialización de proyecto node
 npm init -y
+
 --3.- Instalar Express
 npm install express
+
 --4.- para el ambiente de desarrollo sin ncesidad de transpilar (ts-node) para mirar cambios (nodemon) + tipado de expess y de node
 npm install -D typescript nodemon ts-node @types/express @types/node
+
 --Definir scripts en package.json --"scripts": { "test": "echo \"Error: no test specified\" && exit 1" por:
   "scripts": {
     "start": "node js/server.js", --ajustar nombre del archivo principal
@@ -20,8 +24,11 @@ npm install -D typescript nodemon ts-node @types/express @types/node
 --Correr por nodemon en desarrollo:
 npm run dev
 
+--install socket io
+ npm install express socket.io
 
-
+--install handlebars
+npm install express-handlebars
 
 
 
@@ -32,5 +39,13 @@ npm install nodemon -D (o "--save -dev")
 
 //------ Instalar Express local
 npm i express
+
+//---Instalacion de babel - Transpilador
+Babel.js y el plugin: De los dos módulos instalados, el primero es el propio cliente de Babel 
+y el segundo es el plugin de configuración para que soporte todos los JavaScript de la nueva generación.
+npm  install babel-cli
+npm install babel-preset-env
+
+
 
 

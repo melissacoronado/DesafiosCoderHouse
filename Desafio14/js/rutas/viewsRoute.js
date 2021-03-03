@@ -1,10 +1,13 @@
 "use strict";
-exports.__esModule = true;
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
 exports.RouterViewsProductos = void 0;
-var express = require("express");
-var server_1 = require("../server");
-var router = express.Router();
-router.get('/productos/vista', function (req, res) {
+const express_1 = __importDefault(require("express"));
+const server_1 = require("../server");
+var router = express_1.default.Router();
+router.get('/productos/vista', (req, res) => {
     try {
         //console.log(HistoryMensajesChat)
         res.render('partials/main', { layout: 'index', ListaProductos: server_1.opsProd.productos, ListaMsjChat: server_1.opsChat.ChatMessages });
@@ -14,12 +17,12 @@ router.get('/productos/vista', function (req, res) {
         console.log(error);
     }
 });
-router.post('/productos', function (req, res) {
+router.post('/productos', (req, res) => {
     try {
         console.log('post productos');
-        var _a = req.body, title = _a.title, price = _a.price, thumbnail = _a.thumbnail;
+        const { title, price, thumbnail } = req.body;
         //Falta validar que vengan todos los parametros              
-        var newProduct = { title: title, price: price, thumbnail: thumbnail };
+        const newProduct = { title, price, thumbnail };
         server_1.opsProd.addProduct(newProduct);
         //res.render('partials/addProducts', {layout : 'index'});
         res.render('partials/main', { layout: 'index', ListaProductos: server_1.opsProd.productos });
