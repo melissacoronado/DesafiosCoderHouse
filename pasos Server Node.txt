@@ -1,4 +1,6 @@
 --1.- Crear proyecto typescript
+npm install typescript -g
+
 tsc --init
 	--Editar o descomentar valores en tsconfig
 	--"target": "es6",
@@ -11,6 +13,7 @@ npm init -y
 
 --3.- Instalar Express
 npm install express
+npm install @types/express
 
 --4.- para el ambiente de desarrollo sin ncesidad de transpilar (ts-node) para mirar cambios (nodemon) + tipado de expess y de node
 npm install -D typescript nodemon ts-node @types/express @types/node
@@ -45,6 +48,8 @@ Babel.js y el plugin: De los dos módulos instalados, el primero es el propio cl
 y el segundo es el plugin de configuración para que soporte todos los JavaScript de la nueva generación.
 npm  install babel-cli
 npm install babel-preset-env
+
+npm install @babel/core @babel/cli
 
 
 

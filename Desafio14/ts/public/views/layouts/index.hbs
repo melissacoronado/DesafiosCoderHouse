@@ -37,7 +37,7 @@
                 }
                 if(usermail!==""){
                     let date = new Date(Date.now());
-                    date = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+                    l
                     socket.emit('New chatMsg', {
                         msg: $('#msg').val(),
                         mail: usermail,
