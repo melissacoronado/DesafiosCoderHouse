@@ -1,7 +1,0 @@
-<button id="bttTest">ClickMe</button>
-
-const $button = document.getElementById('bttTest');
-        const click$ = fromEvent($button, 'click');
-        const subscription = click$.subscribe({
-                next: (e) => console.log('Event :', e)
-        });

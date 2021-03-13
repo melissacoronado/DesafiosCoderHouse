@@ -1,9 +1,0 @@
-Dude entre handlebars y Ejs porque fueron los de estructura mas similar al html que estoy acostumbrada, la curva de aprendizaje seria menor. 
-En handlebars consegui mas ejemplos y me gusto que se puede incluir segmentos/bloques dentro de una pagina principal/layout que ejs propiamente no maneja: 
-  "Layouts
-  EJS does not specifically support blocks, but layouts can be implemented by including headers and footers", de esta forma me parece mas repetitiva la estructura de la plantilla.
-Tambien me parecio mas sencillas lass formas de incrustar las variables en handlebars.
-
-Pug despues que entendi logre hacerlo andar pero me parecio que hay que buscarle la vuela y acostumbrase a la semantica.
-
-Me quedo con handlebars.
