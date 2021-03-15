@@ -58,7 +58,7 @@ io.on('connection', (socket: any) => {
 
     
     //chat
-    socket.on('New chatMsg', (data: any) => {
+    socket.on('New chatMsg', async (data: any) => {
         //Leer data
         const { mail, msg, time } = data  
 
@@ -72,7 +72,7 @@ io.on('connection', (socket: any) => {
         const newMsg: IChat = { mail: mail, 
                                time: time, 
                                message: msg  }
-        opsChat.addMessage(newMsg)
+        await opsChat.addMessage(newMsg)
 
         //Emit para mostrar en la lista
         io.emit('new message', newMsg);
