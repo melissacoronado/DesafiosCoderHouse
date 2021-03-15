@@ -19,7 +19,20 @@ knex.schema.createTable('mensajes', table =>{
 .catch((error) => console.error(error))
 .finally(() => knex.destroy())
 
+
+knex.schema.createTable('productos', table =>{
+  table.increments();
+  table.string('title');
+  table.integer('price');
+  table.string('thumbnail');
+})
+.then(() => console.log('Table Created'))
+.catch((error) => console.error(error))
+.finally(() => knex.destroy())
+*/
+
 //Listar tablas
+/*
 knex.select('name')
     .from('sqlite_master')
     .where({type: 'table'})
@@ -27,11 +40,21 @@ knex.select('name')
     .catch(error => console.log(error))
     .finally(() => knex.destroy());
 */
+
 //Listar columnas
-knex.select('*')
+/*knex.select('*')
     .from('sqlite_master')    
     .where({tbl_name: 'mensajes',
             type: 'table'  })
     .then(rows => console.log(rows))
     .catch(error => console.log(error))
     .finally(() => knex.destroy());
+   
+    knex.select('*')
+    .from('sqlite_master')    
+    .where({tbl_name: 'productos',
+            type: 'table'  })
+    .then(rows => console.log(rows))
+    .catch(error => console.log(error))
+    .finally(() => knex.destroy());
+ */

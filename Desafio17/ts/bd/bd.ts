@@ -1,4 +1,11 @@
 import { json } from "express";
+const knex = require('knex')({
+    client: 'sqlite3',
+    connection: {
+      filename: "./mensajes.db.sqlite"
+    },
+    useNullAsDefault: false
+  })
 
 export interface IProd{  
     //Propiedades
@@ -22,40 +29,74 @@ export class Producto implements  IProducto{
     productos:IProd[] = []
 
 
-    addProduct(producto: IProd) {
+    async addProduct(producto: IProd) {
         try{
-            if (this.productos.length == 0){
+            /*if (this.productos.length == 0){
                 producto.id = 1
             }else{
                 let ultIdProd:any = this.productos[this.productos.length - 1]!.id;
                 producto.id = ultIdProd + 1; 
-            }           
+            }  */ 
             
-            this.productos.push(producto) 
+            await knex('productos')
+              .insert({ title: producto.title,
+                        price: producto.price,
+                        thumbnail: producto.thumbnail })
+            
+            //this.productos.push(producto) 
         }catch(error){
             throw error
         }
     }
 
-    showProducts() {
-        return this.productos;
+    async showProducts() {
+        try{
+            const data = await knex.select('*')
+                                .from('productos')
+                                .then((rows: any) => {
+                                //console.log(rows.length)
+                                    if(rows.length > 0){
+                                        this.productos = rows.map((val: any) => <IProd>{
+                                            title: val.title,
+                                            price: val.price,
+                                            thumbnail: val.thumbnail
+                                        });
+                                    }                
+                                })
+                                .catch((error: any) => console.log(error));
+            return this.productos;
+        }catch(error){
+            throw error
+        }
     }
 
-    updateProducts(idProd: number, title:string, price:number, thumbnail:string): void{
+    async updateProducts(idProd: number, title:string, price:number, thumbnail:string){
         try{
-            const productSelecc =  this.productos.find(x => x.id === idProd)        
+            //await this.showProducts();
+            //const productSelecc =  this.productos.find(x => x.id === idProd) 
 
+            await knex('productos')
+                .where('id', '=', idProd)
+                .update({
+                    title: title,
+                    price: price,
+                    thumbnail: thumbnail
+                })                
+/*
             productSelecc!.title = title
             productSelecc!.price = price // -- !validar null o undefined 
-            productSelecc!.thumbnail = thumbnail	
+            productSelecc!.thumbnail = thumbnail	*/
         }catch(error){
             throw error
         }
     }
 
-    deleteProduct(idProd: number){
+    async deleteProduct(idProd: number){
         try{
-            this.productos = this.productos.splice(idProd, 1);
+            await knex('productos')
+                .where('id', '=', idProd)
+                .del()
+            //this.productos = this.productos.splice(idProd, 1);
             //o psProd.productos = psProd.productos.filter(x => x.id !== id);
         }catch(error){
             throw error

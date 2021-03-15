@@ -3,7 +3,7 @@ import express, {Application, Request, Response} from 'express'
 import path from 'path'
 import { RouterApiProductos } from './rutas/ApiProductosRoute';
 import { RouterViewsProductos } from './rutas/viewsRoute';
-import { IProd, Producto } from './bd/bd'
+import { Producto } from './bd/bd'
 import { IChat, ChatMsg } from './bd/archivos'
 
 const handlebars = require('express-handlebars');
@@ -12,12 +12,8 @@ const http = require('http').Server(app)
 const io = require('socket.io')(http, { autoConnect: false/*, transports: ['websocket']*/ })
 
 
-export let opsProd = new Producto()
-export let opsChat = new ChatMsg("chatBD.txt")
-export let HistoryMensajesChat:IChat[] = [];
-(async () => { 
-    opsChat.ChatMessages = await opsChat.getMessages()            
-})()
+let opsProd = new Producto()
+let opsChat = new ChatMsg();
 
 let puerto = process.env.port || 8080;
 app.use('/api', express.static(__dirname + '/public')); //Al principio
@@ -79,10 +75,11 @@ io.on('connection', (socket: any) => {
     });
 
     //Productos
-    socket.on('dataProds', (data: any) => {
+    socket.on('dataProds', async (data: any) => {
         const { title, price, thumbnail } = data  
         const newProduct = { title, price, thumbnail }
-        opsProd.addProduct(newProduct)
+        console.log(newProduct)
+        await opsProd.addProduct(newProduct)
         io.emit('ProductoAgregado', data);
     });
 
