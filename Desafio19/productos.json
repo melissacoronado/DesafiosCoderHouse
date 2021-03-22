@@ -1,0 +1,80 @@
+{ 
+    "_id" : ObjectId("60591acfcfc89b1e47af8645"), 
+    "timestamp" : ISODate("2021-03-22T22:31:43.515+0000"), 
+    "nombre" : "Naranja", 
+    "descripcion" : "Naranja jugo", 
+    "codigo" : "n-101", 
+    "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_laranja-128.png", 
+    "precio" : 1280.0, 
+    "stock" : 100.0
+}
+{ 
+    "_id" : ObjectId("60591acfcfc89b1e47af8646"), 
+    "timestamp" : ISODate("2021-03-22T22:31:43.515+0000"), 
+    "nombre" : "Piña", 
+    "descripcion" : "Anana", 
+    "codigo" : "p-102", 
+    "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_abacaxi-128.png", 
+    "precio" : 2300.0, 
+    "stock" : 100.0
+}
+{ 
+    "_id" : ObjectId("60591acfcfc89b1e47af8647"), 
+    "timestamp" : ISODate("2021-03-22T22:31:43.515+0000"), 
+    "nombre" : "Fresa", 
+    "descripcion" : "Frutilla", 
+    "codigo" : "f-101", 
+    "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_morango-128.png", 
+    "precio" : 3350.0, 
+    "stock" : 100.0
+}
+{ 
+    "_id" : ObjectId("60591acfcfc89b1e47af8648"), 
+    "timestamp" : ISODate("2021-03-22T22:31:43.515+0000"), 
+    "nombre" : "Mango", 
+    "descripcion" : "Mango", 
+    "codigo" : "m-102", 
+    "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_manga-128.png", 
+    "precio" : 4320.0, 
+    "stock" : 0.0
+}
+{ 
+    "_id" : ObjectId("60591acfcfc89b1e47af8649"), 
+    "timestamp" : ISODate("2021-03-22T22:31:43.515+0000"), 
+    "nombre" : "Durazno", 
+    "descripcion" : "Melocoton", 
+    "codigo" : "d-101", 
+    "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_pessego-128.png", 
+    "precio" : 4990.0, 
+    "stock" : 0.0
+}
+{ 
+    "_id" : ObjectId("60591acfcfc89b1e47af864a"), 
+    "timestamp" : ISODate("2021-03-22T22:31:43.515+0000"), 
+    "nombre" : "Patilla", 
+    "descripcion" : "Sandia", 
+    "codigo" : "p-103", 
+    "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_maca-128.png", 
+    "precio" : 1700.0, 
+    "stock" : 100.0
+}
+{ 
+    "_id" : ObjectId("60591acfcfc89b1e47af864b"), 
+    "timestamp" : ISODate("2021-03-22T22:31:43.515+0000"), 
+    "nombre" : "Limon", 
+    "descripcion" : "Limon amarillo", 
+    "codigo" : "l-101", 
+    "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_limao-128.png", 
+    "precio" : 2860.0, 
+    "stock" : 100.0
+}
+{ 
+    "_id" : ObjectId("60591b14cfc89b1e47af864c"), 
+    "timestamp" : ISODate("2021-03-22T22:32:52.654+0000"), 
+    "nombre" : "Tamarindo", 
+    "descripcion" : "Tamarindo", 
+    "codigo" : "t-101", 
+    "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_tamarindo-128.png", 
+    "precio" : 2000.0, 
+    "stock" : 100.0
+}

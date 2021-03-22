@@ -1,0 +1,60 @@
+{ 
+    "_id" : ObjectId("6058bcf23afb36d8f305ca7c"), 
+    "mail" : "mail@yahoo.com", 
+    "time" : ISODate("2021-03-22T15:51:14.515+0000"), 
+    "message" : "Hola"
+}
+{ 
+    "_id" : ObjectId("6058bcf23afb36d8f305ca7d"), 
+    "mail" : "correito@gmail.com", 
+    "time" : ISODate("2021-03-22T15:51:14.515+0000"), 
+    "message" : "Hola, que tal?"
+}
+{ 
+    "_id" : ObjectId("6058bcf23afb36d8f305ca7e"), 
+    "mail" : "correomail@hotmail.com", 
+    "time" : ISODate("2021-03-22T15:51:14.515+0000"), 
+    "message" : "Hola a todos..."
+}
+{ 
+    "_id" : ObjectId("6058bcf23afb36d8f305ca7f"), 
+    "mail" : "mail@yahoo.com", 
+    "time" : ISODate("2021-03-22T15:51:14.515+0000"), 
+    "message" : "prueba con MongoDB"
+}
+{ 
+    "_id" : ObjectId("6058bcf23afb36d8f305ca80"), 
+    "mail" : "correito@gmail.com", 
+    "time" : ISODate("2021-03-22T15:51:14.515+0000"), 
+    "message" : "y que tal?"
+}
+{ 
+    "_id" : ObjectId("6058bcf23afb36d8f305ca81"), 
+    "mail" : "correomail@hotmail.com", 
+    "time" : ISODate("2021-03-22T15:51:14.515+0000"), 
+    "message" : "aprendiendo a usarlo"
+}
+{ 
+    "_id" : ObjectId("6058bcf23afb36d8f305ca82"), 
+    "mail" : "mail@yahoo.com", 
+    "time" : ISODate("2021-03-22T15:51:14.515+0000"), 
+    "message" : "vamos poco a poco"
+}
+{ 
+    "_id" : ObjectId("6058bcf23afb36d8f305ca83"), 
+    "mail" : "correito@gmail.com", 
+    "time" : ISODate("2021-03-22T15:51:14.515+0000"), 
+    "message" : "yo antes usaba sqlserver"
+}
+{ 
+    "_id" : ObjectId("6058bcf23afb36d8f305ca84"), 
+    "mail" : "correomail@hotmail.com", 
+    "time" : ISODate("2021-03-22T15:51:14.515+0000"), 
+    "message" : "Yo tambien..."
+}
+{ 
+    "_id" : ObjectId("6058bcf23afb36d8f305ca85"), 
+    "mail" : "mail@yahoo.com", 
+    "time" : ISODate("2021-03-22T15:51:14.515+0000"), 
+    "message" : "Vamos avanzando, saludos."
+}

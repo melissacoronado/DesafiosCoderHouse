@@ -1,0 +1,62 @@
+Agregar 10 documentos con valores distintos a las colecciones mensajes y productos. 
+> db.createCollection("productos");
+> db.productos.insert([{timestamp: new Date(),nombre:"Manzana",descripcion: "Manzana Roja",codigo: "m-101",foto:"https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_maca-128.png",precio:120},
+{timestamp: new Date(),nombre:"Pera",descripcion: "Pera",codigo: "p-101",foto:"https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_pera-128.png",precio:580},
+{timestamp: new Date(),nombre:"Cambur",descripcion: "Banana",codigo: "c-101",foto:"https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_banana-128.png",precio:900},
+{timestamp: new Date(),nombre:"Naranja",descripcion: "Naranja jugo",codigo: "n-101",foto:"https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_laranja-128.png",precio:1280},
+{timestamp: new Date(),nombre:"Piña",descripcion: "Anana",codigo: "p-102",foto:"https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_abacaxi-128.png",precio:2300},
+{timestamp: new Date(),nombre:"Fresa",descripcion: "Frutilla",codigo: "f-101",foto:"https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_morango-128.png",precio:3350},
+{timestamp: new Date(),nombre:"Mango",descripcion: "Mango",codigo: "m-102",foto:"https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_manga-128.png",precio:4320},
+{timestamp: new Date(),nombre:"Durazno",descripcion: "Melocoton",codigo: "d-101",foto:"https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_pessego-128.png",precio:4990},
+{timestamp: new Date(),nombre:"Patilla",descripcion: "Sandia",codigo: "p-103",foto:"https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_maca-128.png",precio:1700},
+{timestamp: new Date(),nombre:"Limon",descripcion: "Limon amarillo",codigo: "l-101",foto:"https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_limao-128.png",precio:2860}]);
+
+> db.createCollection("mensajes");
+> db.mensajes.insert([{mail:"mail@yahoo.com",time:new Date(),message:"Hola"},
+{"mail": "correito@gmail.com","time": new Date(),"message": "Hola, que tal?"},
+{"mail": "correomail@hotmail.com","time": new Date(),"message": "Hola a todos..."},
+{"mail": "mail@yahoo.com","time": new Date(),"message": "prueba con MongoDB"},
+{"mail": "correito@gmail.com","time": new Date(),"message": "y que tal?"},
+{"mail": "correomail@hotmail.com","time": new Date(),"message": "aprendiendo a usarlo"},
+{"mail": "mail@yahoo.com","time": new Date(),"message": "vamos poco a poco"},
+{"mail": "correito@gmail.com","time": new Date(),"message": "yo antes usaba sqlserver"},
+{"mail": "correomail@hotmail.com","time": new Date(),"message": "Yo tambien..."},
+{mail:"mail@yahoo.com",time:new Date(),message:"Vamos avanzando, saludos."}]);
+
+Mostrar colecciones
+> db.getCollectionNames();
+
+Listar todos los documentos en cada colección.
+> db.productos.find().pretty();
+> db.mensajes.find().pretty();
+
+Mostrar la cantidad de documentos almacenados en cada una de ellas.
+> db.productos.count();
+> db.mensajes.count();
+
+Agregar un producto más en la colección de productos 
+> db.productos.insert({timestamp: new Date(),nombre:"Tamarindo",descripcion: "Tamarindo",codigo: "t-101",foto:"https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_tamarindo-128.png",precio:2000});
+
+Listar los productos con precio menor a 1000 pesos.
+> db.productos.find({precio: {$lt: 1000}}).pretty();
+
+Listar los productos con precio entre los 1000 a 3000 pesos.
+> db.productos.find({$and: [{"precio":{$lte:3000}},{"precio":{$gte:1000}}]}).pretty();
+ 
+Listar los productos con precio mayor a 3000 pesos.
+> db.productos.find({"precio":{$gt:3000}}).pretty();
+
+Realizar una consulta que traiga sólo el nombre del tercer producto más barato.
+> db.productos.find({},{"nombre":1,"_id":0}).sort({precio:1}).skip(2).limit(1).pretty();
+
+Hacer una actualización sobre todos los productos, agregando el campo stock a todos ellos con un valor de 100.
+> db.productos.update({}, {$set: {stock: 100}},false,true);
+
+Cambiar el stock a cero de los productos con precios mayores a 4000 pesos. 
+> db.productos.update({"precio":{$gt:4000}}, {$set: {stock: 0}},false,true);
+
+Borrar los productos con precio menor a 1000 pesos 
+> db.productos.remove({"precio":{$lt:1000}});
+
+Crear un usuario 'pepe' clave: 'asd456' que sólo pueda leer la base de datos ecommerce. Verificar que pepe no pueda cambiar la información.
+db.createUser( { user: "pepe", pwd: "asd456", roles: [{role: "read", db: "ecommerce"}]})

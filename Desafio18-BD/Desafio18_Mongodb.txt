@@ -1,0 +1,24 @@
+use prueba;
+db.items.save({nombre:'Fideos', categoria: 'Harina', stock: 20});
+db.items.save({nombre:'Leche', categoria: 'Lácteos', stock: 30});
+db.items.save({nombre:'Crema', categoria: 'Lácteos', stock: 15});
+db.items.find().pretty();
+{
+        "_id" : ObjectId("6053ec71c7d4b6bc686440c0"),
+        "nombre" : "Fideos",
+        "categoria" : "Harina",
+        "stock" : 20
+}
+{
+        "_id" : ObjectId("6053ec90c7d4b6bc686440c1"),
+        "nombre" : "Leche",
+        "categoria" : "Lácteos",
+        "stock" : 30
+}
+{
+        "_id" : ObjectId("6053eca0c7d4b6bc686440c2"),
+        "nombre" : "Crema",
+        "categoria" : "Lácteos",
+        "stock" : 15
+}
+show dbs;
