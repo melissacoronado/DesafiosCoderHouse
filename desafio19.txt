@@ -1,0 +1,161 @@
+> db.coll.find().pretty();
+{
+        "_id" : ObjectId("6058ade43afb36d8f305ca5d"),
+        "timestamp" : ISODate("2021-03-22T15:05:28.883Z"),
+        "nombre" : "Manzana",
+        "descripcion" : "Manzana Roja",
+        "codigo" : "m-101",
+        "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_maca-128.png",
+        "precio" : 120,
+        "stock" : 250
+}
+{
+        "_id" : ObjectId("6058ade43afb36d8f305ca5e"),
+        "timestamp" : ISODate("2021-03-22T15:06:15.991Z"),
+        "nombre" : "Pera",
+        "descripcion" : "Pera",
+        "codigo" : "p-101",
+        "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_pera-128.png",
+        "precio" : 580,
+        "stock" : 200
+}
+{
+        "_id" : ObjectId("6058ade43afb36d8f305ca5f"),
+        "timestamp" : ISODate("2021-03-22T15:07:42.975Z"),
+        "nombre" : "Cambur",
+        "descripcion" : "Banana",
+        "codigo" : "c-101",
+        "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_banana-128.png",
+        "precio" : 900,
+        "stock" : 170
+}
+{
+        "_id" : ObjectId("6058ade43afb36d8f305ca60"),
+        "timestamp" : ISODate("2021-03-22T15:08:33.073Z"),
+        "nombre" : "Naranja",
+        "descripcion" : "Naranja jugo",
+        "codigo" : "n-101",
+        "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_laranja-128.png",
+        "precio" : 1280,
+        "stock" : 300
+}
+{
+        "_id" : ObjectId("6058ade43afb36d8f305ca61"),
+        "timestamp" : ISODate("2021-03-22T15:09:08.632Z"),
+        "nombre" : "Piña",
+        "descripcion" : "Anana",
+        "codigo" : "p-102",
+        "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_abacaxi-128.png",
+        "precio" : 2300,
+        "stock" : 200
+}
+{
+        "_id" : ObjectId("6058ade43afb36d8f305ca62"),
+        "timestamp" : ISODate("2021-03-22T15:09:35.807Z"),
+        "nombre" : "Fresa",
+        "descripcion" : "Frutilla",
+        "codigo" : "f-101",
+        "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_morango-128.png",
+        "precio" : 3350,
+        "stock" : 150
+}
+{
+        "_id" : ObjectId("6058ade43afb36d8f305ca63"),
+        "timestamp" : ISODate("2021-03-22T15:11:12.542Z"),
+        "nombre" : "Mango",
+        "descripcion" : "Mango",
+        "codigo" : "m-102",
+        "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_manga-128.png",
+        "precio" : 4320,
+        "stock" : 100
+}
+{
+        "_id" : ObjectId("6058ade43afb36d8f305ca64"),
+        "timestamp" : ISODate("2021-03-22T15:11:45.430Z"),
+        "nombre" : "Durazno",
+        "descripcion" : "Melocoton",
+        "codigo" : "d-101",
+        "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_pessego-128.png",
+        "precio" : 4990,
+        "stock" : 150
+}
+{
+        "_id" : ObjectId("6058ade43afb36d8f305ca65"),
+        "timestamp" : ISODate("2021-03-22T15:12:10.679Z"),
+        "nombre" : "Patilla",
+        "descripcion" : "Sandia",
+        "codigo" : "p-103",
+        "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_maca-128.png",
+        "precio" : 1700,
+        "stock" : 250
+}
+{
+        "_id" : ObjectId("6058ade43afb36d8f305ca66"),
+        "timestamp" : ISODate("2021-03-22T15:12:34.243Z"),
+        "nombre" : "Limon",
+        "descripcion" : "Limon amarillo",
+        "codigo" : "l-101",
+        "foto" : "https://cdn3.iconfinder.com/data/icons/fruits-52/150/icon_fruit_limao-128.png",
+        "precio" : 2860,
+        "stock" : 250
+}
+{
+        "_id" : ObjectId("6058b0353afb36d8f305ca67"),
+        "mail" : "mail@yahoo.com",
+        "time" : ISODate("2021-03-22T14:56:53.766Z"),
+        "message" : "Hola"
+}
+{
+        "_id" : ObjectId("6058b0353afb36d8f305ca68"),
+        "mail" : "correito@gmail.com",
+        "time" : ISODate("2021-03-22T14:56:53.766Z"),
+        "message" : "Hola, que tal?"
+}
+{
+        "_id" : ObjectId("6058b0353afb36d8f305ca69"),
+        "mail" : "correomail@hotmail.com",
+        "time" : ISODate("2021-03-22T14:56:53.766Z"),
+        "message" : "Hola a todos..."
+}
+{
+        "_id" : ObjectId("6058b0353afb36d8f305ca6a"),
+        "mail" : "mail@yahoo.com",
+        "time" : ISODate("2021-03-22T14:56:53.766Z"),
+        "message" : "prueba con MongoDB"
+}
+{
+        "_id" : ObjectId("6058b0353afb36d8f305ca6b"),
+        "mail" : "correito@gmail.com",
+        "time" : ISODate("2021-03-22T14:56:53.766Z"),
+        "message" : "y que tal?"
+}
+{
+        "_id" : ObjectId("6058b0353afb36d8f305ca6c"),
+        "mail" : "correomail@hotmail.com",
+        "time" : ISODate("2021-03-22T14:56:53.766Z"),
+        "message" : "aprendiendo a usarlo"
+}
+{
+        "_id" : ObjectId("6058b0353afb36d8f305ca6d"),
+        "mail" : "mail@yahoo.com",
+        "time" : ISODate("2021-03-22T14:56:53.766Z"),
+        "message" : "vamos poco a poco"
+}
+{
+        "_id" : ObjectId("6058b0353afb36d8f305ca6e"),
+        "mail" : "correito@gmail.com",
+        "time" : ISODate("2021-03-22T14:56:53.766Z"),
+        "message" : "yo antes usaba sqlserver"
+}
+{
+        "_id" : ObjectId("6058b0353afb36d8f305ca6f"),
+        "mail" : "correomail@hotmail.com",
+        "time" : ISODate("2021-03-22T14:56:53.766Z"),
+        "message" : "Yo tambien..."
+}
+{
+        "_id" : ObjectId("6058b0353afb36d8f305ca70"),
+        "mail" : "mail@yahoo.com",
+        "time" : ISODate("2021-03-22T14:56:53.766Z"),
+        "message" : "Vamos avanzando, saludos."
+}
