@@ -75,9 +75,12 @@
             event.preventDefault();
 
             socket.emit('dataProds', {
-                title: $('#title').val(),
-                price: $('#price').val(),
-                thumbnail: $('#thumbnail').val()
+                nombre: $('#nombre').val(),
+                descripcion:  $('#descripcion').val(),
+                codigo: $('#codigo').val(),
+                foto: $('#foto').val(),
+                precio: $('#precio').val(),
+                stock: $('#stock').val()
             });
         });
 
@@ -87,7 +90,7 @@
                 $("#tblProds tbody tr").remove(); 
             }
             //Mostrar producto en la tabla
-            const { title, price, thumbnail } = data  
+            const { nombre, descripcion, codigo, foto, precio, stock } = data  
             $("#tblProds").find('tbody')
                 .append($('<tr>')
                     .append($('<td>')
@@ -103,7 +106,7 @@
                         )
                     )
                 );             
-            $('#title, #price, #thumbnail').val("")
+            $('#nombre, #descripcion, #codigo, #foto, #precio, #stock').val("")
         });
             
     </script>

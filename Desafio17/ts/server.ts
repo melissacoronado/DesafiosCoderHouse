@@ -3,8 +3,9 @@ import express, {Application, Request, Response} from 'express'
 import path from 'path'
 import { RouterApiProductos } from './rutas/ApiProductosRoute';
 import { RouterViewsProductos } from './rutas/viewsRoute';
-import { Producto } from './bd/bd'
-import { IChat, ChatMsg } from './bd/archivos'
+import { IProd, Producto } from './bd/productos'
+import { IChat, ChatMsg } from './bd/mensajes'
+const db = require('./bd/bd')
 
 const handlebars = require('express-handlebars');
 const app:Application = express()
@@ -76,8 +77,9 @@ io.on('connection', (socket: any) => {
 
     //Productos
     socket.on('dataProds', async (data: any) => {
-        const { title, price, thumbnail } = data  
-        const newProduct = { title, price, thumbnail }
+        const { nombre, descripcion, codigo, foto, precio, stock } = data  
+        const timestamp = new Date(Date.now());
+        const newProduct: IProd = { timestamp, nombre, descripcion, codigo, foto, precio, stock }
         console.log(newProduct)
         await opsProd.addProduct(newProduct)
         io.emit('ProductoAgregado', data);

@@ -1,7 +1,7 @@
 import express, {Application, Request, Response} from 'express'
-import { copyFileSync } from 'fs'
-import { IProd, Producto } from '../bd/bd'
-import { IChat, ChatMsg } from '../bd/archivos'
+//import { copyFileSync } from 'fs'
+import { IProd, Producto } from '../bd/productos'
+import { IChat, ChatMsg } from '../bd/mensajes'
 
 //import { opsProd } from '../server'
 let opsChat = new ChatMsg()
@@ -23,10 +23,10 @@ router.get('/productos/vista', async (req: Request, res: Response) => {
 router.post('/productos', (req: Request, res: Response) => {  
     try{    
         console.log('post productos');
-        const { title, price, thumbnail } = req.body  
+        const { timestamp, nombre, descripcion, codigo, foto, precio, stock } = req.body  
         
         //Falta validar que vengan todos los parametros              
-        const newProduct = { title, price, thumbnail }
+        const newProduct = { timestamp, nombre, descripcion, codigo, foto, precio, stock }
 
         opsProd.addProduct(newProduct)       
         //res.render('partials/addProducts', {layout : 'index'});

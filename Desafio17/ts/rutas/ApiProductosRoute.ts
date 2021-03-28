@@ -1,6 +1,6 @@
 import express, {Application, Request, Response} from 'express'
 import { copyFileSync } from 'fs'
-import { IProd, Producto } from '../bd/bd'
+import { IProd, Producto } from '../bd/productos'
 
 let opsProd = new Producto()
 
@@ -47,7 +47,7 @@ router.get('/:id', async (req: Request, res: Response) => {
 
 router.patch('/actualizar/:id', async (req: Request, res: Response) => { 
     try{    
-        const id: number = +req.params.id //Viene de la url/1 y el + para parsear a numero
+        const id: any = req.params.id //Viene de la url/1 y el + para parsear a numero
         opsProd.productos =  await opsProd.showProducts()
 
         if (opsProd.productos.length == 0){
@@ -60,9 +60,9 @@ router.patch('/actualizar/:id', async (req: Request, res: Response) => {
 			res.status(404).json({error : 'Producto no encontrado'})
             return;
         }
-        
-        const { title, price, thumbnail } = req.body  
-        await opsProd.updateProducts(id, title, price, thumbnail)
+
+        const { nombre, descripcion, codigo, foto, precio, stock } = req.body  
+        await opsProd.updateProducts(id, nombre, descripcion, codigo, foto, precio, stock)
         
         res.status(200).json({Respuesta: "Producto Modificado!"})        
     }catch(error){
@@ -73,7 +73,7 @@ router.patch('/actualizar/:id', async (req: Request, res: Response) => {
 
 router.delete('/borrar/:id', async (req: Request, res: Response) => {  
     try{    
-        const id: number = +req.params.id 
+        const id: any = req.params.id 
         opsProd.productos =  await opsProd.showProducts()
 
         if (opsProd.productos.length == 0){
