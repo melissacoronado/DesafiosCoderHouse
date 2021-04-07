@@ -20,6 +20,27 @@ router.get('/productos/vista', async (req: Request, res: Response) => {
     }
 })
 
+router.get('/productos/vista-test', (req: Request, res: Response) => {  
+    try{ 
+        let productosMock = [];
+        let cant: number = 0;
+        if(req.query.cant){
+            cant = +req.query.cant;
+        }else{
+            cant = 10; 
+        }
+        /*if(cant > 0){
+            return res.status(404).json({error : 'No hay Productos disponibles.'});
+        }*/
+        productosMock = opsProd.generateProducts(cant)
+        console.log('CantProd: ' + productosMock.length);
+        res.render('partials/mockprods', { layout : 'indexmock', ListaProductos: productosMock });
+    }catch(error){
+        res.status(404).json({error : 'Error mostrando listado de Productos.'})
+        console.log(error)
+    }
+})
+
 router.post('/productos', (req: Request, res: Response) => {  
     try{    
         console.log('post productos');

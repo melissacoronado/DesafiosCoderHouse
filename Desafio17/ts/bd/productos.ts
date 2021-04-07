@@ -3,6 +3,7 @@ import path from 'path';
 import mongoose from 'mongoose';
 
 import {productosModel} from '../models/productos'
+import {getProds} from '../mocks/productos.mock';
 
 export interface IProd{  
     //Propiedades
@@ -24,7 +25,8 @@ interface IProducto{
     addProduct(producto: IProd): void;
     showProducts(): void;
     updateProducts(idProd: string, nombre:string, descripcion: string, codigo: number, foto:string, precio:number, stock:number): void;
-    deleteProduct(idProd: string):void
+    deleteProduct(idProd: string):void;
+    generateProducts(cant: number): void;
 }
 
 export class Producto implements  IProducto{
@@ -97,5 +99,14 @@ export class Producto implements  IProducto{
         }catch(error){
             throw error
         }
+    }
+
+    generateProducts = (cant: number) => {
+        let productosMock = [];
+        for(let i=0; i<cant; i++){
+            let productomock = getProds();
+            productosMock.push(productomock);
+        }
+        return  productosMock; 
     }
 }
