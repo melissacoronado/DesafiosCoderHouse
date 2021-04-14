@@ -5,6 +5,7 @@ import { RouterApiProductos } from './rutas/ApiProductosRoute';
 import { RouterViewsProductos } from './rutas/viewsRoute';
 import { IProd, Producto } from './bd/productos'
 import { IChat, ChatMsg } from './bd/mensajes'
+import { normalize, schema } from 'normalizr';
 const db = require('./bd/bd')
 
 const handlebars = require('express-handlebars');
@@ -47,17 +48,28 @@ http.listen(puerto, ()=> {
 })
 
 
+//Desafio23
+const authorSchema = new schema.Entity('author',{}, {idAttribute:'mail'});
+const mensajeSchema = new schema.Entity('chstMsg', {
+    author: authorSchema
+},
+{idAttribute:'_id'});
+
 
 io.on('connection', (socket: any) => {
     let idSock = socket.id
     let addedMail = false;
     console.log('A user connected' + socket.id);
-
     
     //chat
     socket.on('New chatMsg', async (data: any) => {
+        console.log(data);
         //Leer data
         const { mail, msg, time } = data  
+
+        //D23
+        const chatMsgNormalizr = normalize(data, authorSchema);
+        console.log(chatMsgNormalizr);
 
         //Agregar usuario- asociar correo con socket
         if (!addedMail){

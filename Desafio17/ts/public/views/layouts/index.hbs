@@ -22,7 +22,7 @@
     </div> 
     <script src="/socket.io/socket.io.js"></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
-    <!--script src="/scripts/funcs.js"></script-->
+    <script src="https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.min.js"></script> 
 
     <script>
         const socket = io();
@@ -37,12 +37,25 @@
                 }
                 if(usermail!==""){
                     let date = new Date(Date.now());
+
+                    let msjEnviar = [ 
+                                        author: {
+                                            id: 'mailusuario@gmail.com', 
+                                            nombre: 'nombre del usuario', 
+                                            apellido: 'apellido del usuario', 
+                                            edad: 'edad del usuario', 
+                                            alias: 'alias del usuario',
+                                            avatar: 'url avatar (foto, logo) del usuario'
+                                        },
+                                        text: 'mensaje del usuario'
+                                    ];
+                    socket.emit('New chatMsg', msjEnviar);
                     
-                    socket.emit('New chatMsg', {
+                    /*socket.emit('New chatMsg', {
                         msg: $('#msg').val(),
                         mail: usermail,
                         time: date
-                    });
+                    });*/
                 }else{
                     alert("Debe ingrear un correo para enviar mensajes.");
                 }
