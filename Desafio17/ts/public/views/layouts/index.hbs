@@ -38,18 +38,40 @@
                 if(usermail!==""){
                     let date = new Date(Date.now());
 
-                    let msjEnviar = [ 
-                                        author: {
-                                            id: 'mailusuario@gmail.com', 
-                                            nombre: 'nombre del usuario', 
-                                            apellido: 'apellido del usuario', 
-                                            edad: 'edad del usuario', 
-                                            alias: 'alias del usuario',
-                                            avatar: 'url avatar (foto, logo) del usuario'
+let prueba = { 
+   "id": 1,
+   "title": "My blogpost",
+   "description": "Short blogpost description",
+   "content": "Hello world",
+   "author": { 
+      "id": 1,
+      "name": "John Doe"
+   },
+   "comments": [ 
+      { 
+         "id": 1,
+         "author": "Rob",
+         "content": "Nice post!"
+      },
+      { 
+         "id": 2,
+         "author": "Jane",
+         "content": "I totally agree with you"
+      }
+   ]
+}
+                   /* let msjEnviar = {
+                                        "author": {
+                                            "id": 'mailusuario@gmail.com', 
+                                            "nombre": 'nombre del usuario', 
+                                            "apellido": 'apellido del usuario', 
+                                            "edad": 'edad del usuario', 
+                                            "alias": 'alias del usuario',
+                                            "avatar": 'url avatar (foto, logo) del usuario'
                                         },
-                                        text: 'mensaje del usuario'
-                                    ];
-                    socket.emit('New chatMsg', msjEnviar);
+                                        "text": 'mensaje del usuario'
+                    };*/
+                    socket.emit('New chatMsg', prueba);
                     
                     /*socket.emit('New chatMsg', {
                         msg: $('#msg').val(),

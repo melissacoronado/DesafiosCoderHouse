@@ -49,11 +49,20 @@ http.listen(puerto, ()=> {
 
 
 //Desafio23
-const authorSchema = new schema.Entity('author',{}, {idAttribute:'mail'});
-const mensajeSchema = new schema.Entity('chstMsg', {
+/*const authorSchema = new schema.Entity('author');
+const postSchema = new schema.Entity('mensaje', {
     author: authorSchema
-},
-{idAttribute:'_id'});
+  });*/
+  // Data about author will be stored in 'authors' object
+const authorSchema = new schema.Entity('authors');
+// Data about comment will be store in 'comments' object
+const commentSchema = new schema.Entity('comments'); 
+// Post object has information about one author and many comments stored in array 
+// Author information is stored in 'author' and comments array is 'comments`
+const postSchema = new schema.Entity('posts', {
+  author: authorSchema,
+  comments: [commentSchema]
+});
 
 
 io.on('connection', (socket: any) => {
@@ -68,7 +77,7 @@ io.on('connection', (socket: any) => {
         const { mail, msg, time } = data  
 
         //D23
-        const chatMsgNormalizr = normalize(data, authorSchema);
+        const chatMsgNormalizr = normalize(data, postSchema);
         console.log(chatMsgNormalizr);
 
         //Agregar usuario- asociar correo con socket
