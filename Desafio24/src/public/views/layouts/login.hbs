@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> head}}
+
+<body>  
+    <div class="container">        
+        <div class="row">
+            <div class="col-md-3"></div>
+                <div class="col-md-6">
+                    <form method="POST" action="/api/loginUp">
+                    <legend>Login de Usuario</legend>
+                    <!-- Text input-->
+                    <div class="form-group">
+                        <label class="col-md-8 control-label" for="Ingrese su nombre">Ingrese su nombre</label>  
+                        <div class="col-md-8">
+                            <input id="user" name="user" type="text" placeholder="placeholder" class="form-control input-md">
+                            <span class="help-block">help</span>  
+                        </div>
+                    </div>
+                    <!-- Button -->
+                    <div class="form-group">
+                        <label class="col-md-8 control-label" for="singlebutton">Enviar</label>
+                        <div class="col-md-8">
+                            <!--button id="bttLogin" name="bttLogin" class="btn btn-primary">Button</button-->
+                            <input type="submit" class="btn btn-primary">
+                        </div>
+                    </div>
+                    </form>   
+                </div>
+            <div class="col-md-3"></div>
+        </div>     
+        
+    </div>   
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <script>
+         /*$('#bttLogin').on('click', function(event) {
+            event.preventDefault();
+
+           $.post('/api/login', {
+                user: $('#txtuser').val()
+            }).done(() => {
+                alert(1)
+                //window.location.assign('/api/productos/vista')
+            })
+        });*/
+    </script>
+</body>
+</html>
