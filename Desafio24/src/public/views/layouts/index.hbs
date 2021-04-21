@@ -5,13 +5,15 @@
 <body>
     {{> header}}   
     <div class="container">
-         <div class="row">
-             <div class="col">
+         <div class="row">             
                 <div class="input-group mb-3">
-                    <label id="lbltipAddedComment">Bienvenido {{ this.user }}</label>
-                    <button class="btn btn-outline-primary" type="button" id="bttDeslogear">Desloguear</button>
+                    <form method="POST" action="/api/logout">
+                        <h4><span class="badge bg-secondary">Bienvenido {{ this.user }}</span></h4>
+                        <input type="submit" class="btn btn-outline-primary" value="Desloguear" />
+                        <!--button class="btn btn-outline-primary" type="button" id="bttDeslogear">Desloguear</button-->
+                    </form>
                 </div>
-             </div>
+
          </div>
         <div class="row">
             <div class="col-md-1"></div>
@@ -35,6 +37,9 @@
     <script src="https://cdn.jsdelivr.net/npm/normalizr@3.6.1/dist/normalizr.browser.min.js"></script> 
 
     <script>
+    
+
+
         const socket = io();
         let usermail = "";
         //Chat

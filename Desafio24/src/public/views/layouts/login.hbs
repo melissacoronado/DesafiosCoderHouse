@@ -3,13 +3,34 @@
 {{> head}}
 
 <body>  
-    <div class="container">        
+    <div class="container login-container">
+            <div class="row">
+                <div class="col-md-3"></div>
+                <div class="col-md-6 login-form-1">
+                    <h3>Iniciar Sesión</h3>
+                    <form method="POST" action="/api/productos/vista">
+                        <div class="form-group">
+                            <input id="user" name="user" type="text" class="form-control" placeholder="" value="" />
+                        </div>                        
+                        <div class="form-group">
+                            <input type="submit" class="btnSubmit" value="Login" />
+                        </div>                        
+                    </form>
+                </div>
+                <div class="col-md-3"></div>
+            </div>
+    </div>
+
+
+
+
+
+    <!--div class="container">        
         <div class="row">
             <div class="col-md-3"></div>
                 <div class="col-md-6">
                     <form method="POST" action="/api/loginUp">
                     <legend>Login de Usuario</legend>
-                    <!-- Text input-->
                     <div class="form-group">
                         <label class="col-md-8 control-label" for="Ingrese su nombre">Ingrese su nombre</label>  
                         <div class="col-md-8">
@@ -17,11 +38,9 @@
                             <span class="help-block">help</span>  
                         </div>
                     </div>
-                    <!-- Button -->
                     <div class="form-group">
                         <label class="col-md-8 control-label" for="singlebutton">Enviar</label>
                         <div class="col-md-8">
-                            <!--button id="bttLogin" name="bttLogin" class="btn btn-primary">Button</button-->
                             <input type="submit" class="btn btn-primary">
                         </div>
                     </div>
@@ -30,19 +49,9 @@
             <div class="col-md-3"></div>
         </div>     
         
-    </div>   
+    </div-->  
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script> 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
-    <script>
-         /*$('#bttLogin').on('click', function(event) {
-            event.preventDefault();
-
-           $.post('/api/login', {
-                user: $('#txtuser').val()
-            }).done(() => {
-                alert(1)
-                //window.location.assign('/api/productos/vista')
-            })
-        });*/
-    </script>
+    
 </body>
 </html>
