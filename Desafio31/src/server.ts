@@ -3,18 +3,15 @@ import express, {Application, Request, Response} from 'express'
 import path from 'path'
 import { RouterApiProductos } from './routes/ApiProductosRoute';
 import { RouterViewsProductos } from './routes/viewsRoute';
-//import { AuthUsers } from './routes/authRoute';
+import { AuthUsers } from './routes/authRoute';
 import { IProd, Producto } from './service/productos';
 import { IChat, ChatMsg } from './service/mensajes';
 const db = require('./service/bd') //Para conex a la bd moongose
 const session = require('express-session');
 import cookieParser from 'cookie-parser';
-const MongoStore = require('connect-mongo')
-
-import * as bodyparser from 'body-parser';
-const bCrypt = require('bcrypt');
-const passport = require('passport');
-const localStrategy = require('passport-local').localStrategy;
+const MongoStore = require('connect-mongo');
+const compression = require('compression');
+export const log4js = require('log4js');
 
 
 const handlebars = require('express-handlebars');
@@ -31,6 +28,8 @@ let puerto = process.env.port || 8080;
 app.use('/api', express.static(__dirname + '/public')); //Al principio
 app.use(express.json())
 app.use(express.urlencoded({extended: true}))
+
+app.use(compression())
 
 //Sets handlebars configurations 
 app.engine('hbs', handlebars({
@@ -59,16 +58,38 @@ app.use(session({
 
 app.use('/api', RouterViewsProductos);
 app.use('/api/productos', RouterApiProductos);
-//app.use("/api/user", AuthUsers);
+app.use("/api/user", AuthUsers);
 //app.use("/scripts", express.static(__dirname + '/public/scripts'));
 //app.set('scripts', express.static(path.resolve(__dirname + '/public/scripts/'))); 
 //app.set('socketio', io);
 
+
+log4js.configure({
+    appenders: {
+      consolelog: { type: "console" },
+      warnlog: { type: 'file', filename: 'warn.log' },
+      errorLog: { type: 'file', filename: 'error.log' }
+    },
+    categories: {
+      default: { appenders: ["consolelog"], level: "error" },
+      archivo: { appenders: ["warnlog"], level: "info" },
+      archivo2: { appenders: ["errorLog"], level: "error" },
+      todos: { appenders: ["consolelog"], level: "error" }
+    }
+  });
+
+  const logger = log4js.getLogger();
+
 http.listen(puerto, ()=> {
     console.log('Servidor escuchando en puerto 8080')
-     
+    logger.trace("Servidor escuchando en puerto 8080");
+    logger.debug("Servidor escuchando en puerto 8080");
+    logger.info("Servidor escuchando en puerto 8080");
+    logger.warn("Servidor escuchando en puerto 8080");
 }).on("error", (err: any)=>{
     console.log(err)
+    logger.error(err);
+logger.fatal(err);
 })
 
 
