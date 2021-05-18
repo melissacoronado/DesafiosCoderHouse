@@ -11,7 +11,7 @@ const session = require('express-session');
 import cookieParser from 'cookie-parser';
 const MongoStore = require('connect-mongo');
 const compression = require('compression');
-export const log4js = require('log4js');
+import { logger } from './helper/logger';
 
 
 const handlebars = require('express-handlebars');
@@ -64,21 +64,7 @@ app.use("/api/user", AuthUsers);
 //app.set('socketio', io);
 
 
-log4js.configure({
-    appenders: {
-      consolelog: { type: "console" },
-      warnlog: { type: 'file', filename: 'warn.log' },
-      errorLog: { type: 'file', filename: 'error.log' }
-    },
-    categories: {
-      default: { appenders: ["consolelog"], level: "error" },
-      archivo: { appenders: ["warnlog"], level: "info" },
-      archivo2: { appenders: ["errorLog"], level: "error" },
-      todos: { appenders: ["consolelog"], level: "error" }
-    }
-  });
 
-  const logger = log4js.getLogger();
 
 http.listen(puerto, ()=> {
     console.log('Servidor escuchando en puerto 8080')
@@ -89,11 +75,13 @@ http.listen(puerto, ()=> {
 }).on("error", (err: any)=>{
     console.log(err)
     logger.error(err);
-logger.fatal(err);
+    logger.fatal(err);
 })
 
 
-
+/*module.exports = {
+    log4js: logger
+  };*/
 
 
 io.on('connection', (socket: any) => {

@@ -1,8 +1,8 @@
 import express, {Application, Request, Response} from 'express'
 import { IProd, Producto } from '../service/productos'
-import { log4js } from '../server'
+import { logger, loggerError, loggerWarn } from '../helper/logger';
+import { exception } from 'node:console';
 
-//const logger = log4js.getLogger();
 let opsProd = new Producto()
 
 var router = express.Router()
@@ -10,9 +10,10 @@ var router = express.Router()
 
 router.get('/', async (req: Request, res: Response) => {  
     try{        
-        const products =  await opsProd.showProducts()
+        const products =  await opsProd.showProducts();
+        //throw 'Test error log4js!'; //Para probar el log
         if (products.length == 0){
-            logger.warn("No hay productos cargados.");
+            loggerWarn.warn("No hay productos cargados.");
             res.status(404).json({error : 'No hay productos cargados.'})
             return;
         }else{
@@ -21,7 +22,7 @@ router.get('/', async (req: Request, res: Response) => {
             return;
         }
     }catch(error){
-        logger.error(error);
+        loggerError.error(error);
         res.status(404).json({error : 'No se pudo obtener el listado de Productos.'})
     }
 })
