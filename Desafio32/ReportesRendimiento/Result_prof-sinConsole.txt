@@ -1,0 +1,237 @@
+Statistical profiling result from sinConsole.log, (9562 ticks, 4 unaccounted, 0 excluded).
+
+ [Shared libraries]:
+   ticks  total  nonlib   name
+   7058   73.8%          C:\Windows\SYSTEM32\ntdll.dll
+   2365   24.7%          C:\Program Files\nodejs\node.exe
+      4    0.0%          C:\Windows\System32\KERNEL32.DLL
+      1    0.0%          C:\Windows\System32\WS2_32.dll
+      1    0.0%          C:\Windows\System32\KERNELBASE.dll
+
+ [JavaScript]:
+   ticks  total  nonlib   name
+     22    0.2%   16.5%  LazyCompile: *resolve path.js:130:10
+     14    0.1%   10.5%  LazyCompile: *parse C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:269:30
+      8    0.1%    6.0%  LazyCompile: *next C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:478:32
+      7    0.1%    5.3%  LazyCompile: *SourceNode_walk C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\source-map\lib\source-node.js:221:53
+      5    0.1%    3.8%  LazyCompile: *wrap C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\code-gen.js:101:22
+      5    0.1%    3.8%  LazyCompile: *next C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\express\lib\router\index.js:176:16
+      4    0.0%    3.0%  LazyCompile: *serializeInto C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\bson\lib\bson\parser\serializer.js:674:43
+      4    0.0%    3.0%  LazyCompile: *onwrite internal/streams/writable.js:394:17
+      3    0.0%    2.3%  LazyCompile: *emit events.js:264:44
+      2    0.0%    1.5%  RegExp: \u001b\[\d\d?m
+      2    0.0%    1.5%  LazyCompile: *resolvePath C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:492:36
+      2    0.0%    1.5%  LazyCompile: *hidden internal/errors.js:286:25
+      2    0.0%    1.5%  LazyCompile: *get internal/bootstrap/pre_execution.js:300:8
+      2    0.0%    1.5%  LazyCompile: *formatValue internal/util/inspect.js:738:21
+      1    0.0%    0.8%  RegExp: ^([a-zA-Z]:|[\\\/]{2}[^\\\/]+[\\\/]+[^\\\/]+)?([\\\/])?([\s\S]*?)$
+      1    0.0%    0.8%  RegExp: ^(?:false(?=([~}\s)])))
+      1    0.0%    0.8%  RegExp: ^(?:\}(~)?\}\})
+      1    0.0%    0.8%  RegExp: ^(?:\|)
+      1    0.0%    0.8%  RegExp: ^(?:\{\{(~)?\*?)
+      1    0.0%    0.8%  RegExp: ^(?:\{\{(~)?#\*?)
+      1    0.0%    0.8%  RegExp: ^(?:\.\.)
+      1    0.0%    0.8%  RegExp: ^(?:\()
+      1    0.0%    0.8%  RegExp: ^(?:[^\x00]*?(?=(\{\{)))
+      1    0.0%    0.8%  RegExp: ^(?:(~)?\}\})
+      1    0.0%    0.8%  RegExp: \r?\n\s*?$
+      1    0.0%    0.8%  RegExp: (?:\r\n?|\n).*
+      1    0.0%    0.8%  LazyCompile: *yy.locInfo C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\base.js:42:25
+      1    0.0%    0.8%  LazyCompile: *writeOrBuffer internal/streams/writable.js:334:23
+      1    0.0%    0.8%  LazyCompile: *write buffer.js:1042:40
+      1    0.0%    0.8%  LazyCompile: *write C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\cmap\connection.js:297:15
+      1    0.0%    0.8%  LazyCompile: *slice buffer.js:1107:40
+      1    0.0%    0.8%  LazyCompile: *readableAddChunk internal/streams/readable.js:231:26
+      1    0.0%    0.8%  LazyCompile: *pushSource C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:881:34
+      1    0.0%    0.8%  LazyCompile: *processTicksAndRejections internal/process/task_queues.js:65:35
+      1    0.0%    0.8%  LazyCompile: *preparePath C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\helpers.js:63:21
+      1    0.0%    0.8%  LazyCompile: *opcode C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:347:26
+      1    0.0%    0.8%  LazyCompile: *normalizeString path.js:52:25
+      1    0.0%    0.8%  LazyCompile: *normalize path.js:265:12
+      1    0.0%    0.8%  LazyCompile: *nextTick internal/process/task_queues.js:101:18
+      1    0.0%    0.8%  LazyCompile: *join path.js:367:7
+      1    0.0%    0.8%  LazyCompile: *invokePartialWrapper C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\runtime.js:70:32
+      1    0.0%    0.8%  LazyCompile: *hasTimedOut C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\core\sessions.js:555:14
+      1    0.0%    0.8%  LazyCompile: *generateList C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\code-gen.js:143:38
+      1    0.0%    0.8%  LazyCompile: *formatRaw internal/util/inspect.js:807:19
+      1    0.0%    0.8%  LazyCompile: *formatProperty internal/util/inspect.js:1682:24
+      1    0.0%    0.8%  LazyCompile: *extend C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\utils.js:28:16
+      1    0.0%    0.8%  LazyCompile: *escapeFn internal/util/inspect.js:460:18
+      1    0.0%    0.8%  LazyCompile: *copy C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\bl\bl.js:138:43
+      1    0.0%    0.8%  LazyCompile: *classifySexpr C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:363:40
+      1    0.0%    0.8%  LazyCompile: *castChunk C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\code-gen.js:52:19
+      1    0.0%    0.8%  LazyCompile: *anonymous C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\parser.js:12:42
+      1    0.0%    0.8%  LazyCompile: *adjustOffset buffer.js:1090:22
+      1    0.0%    0.8%  LazyCompile: *_unrefTimer net.js:393:52
+      1    0.0%    0.8%  LazyCompile: *_storeHeader _http_outgoing.js:360:22
+      1    0.0%    0.8%  LazyCompile: *_addListener events.js:343:22
+      1    0.0%    0.8%  LazyCompile: *WhitespaceControl.Program C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\whitespace-control.js:19:48
+      1    0.0%    0.8%  LazyCompile: *Readable.read internal/streams/readable.js:390:35
+      1    0.0%    0.8%  LazyCompile: *Glob._readdir C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\glob.js:525:36
+      1    0.0%    0.8%  LazyCompile: *Glob._process C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\glob.js:298:36
+      1    0.0%    0.8%  LazyCompile: *ContentStatement C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:228:46
+      1    0.0%    0.8%  LazyCompile: *<anonymous> C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\source-map\lib\source-node.js:174:29
+
+ [C++]:
+   ticks  total  nonlib   name
+
+ [Summary]:
+   ticks  total  nonlib   name
+    129    1.3%   97.0%  JavaScript
+      0    0.0%    0.0%  C++
+     52    0.5%   39.1%  GC
+   9429   98.6%          Shared libraries
+      4    0.0%          Unaccounted
+
+ [C++ entry points]:
+   ticks    cpp   total   name
+
+ [Bottom up (heavy) profile]:
+  Note: percentage shows a share of a particular caller in the total
+  amount of its parent calls.
+  Callers occupying less than 1.0% are not shown.
+
+   ticks parent  name
+   7058   73.8%  C:\Windows\SYSTEM32\ntdll.dll
+
+   2365   24.7%  C:\Program Files\nodejs\node.exe
+   1677   70.9%    C:\Program Files\nodejs\node.exe
+   1052   62.7%      LazyCompile: ~handleWriteReq internal/stream_base_commons.js:47:24
+    680   64.6%        LazyCompile: *writeOrBuffer internal/streams/writable.js:334:23
+    618   90.9%          LazyCompile: *Writable.write internal/streams/writable.js:258:36
+    588   95.1%            LazyCompile: ~value internal/console/constructor.js:258:20
+     30    4.9%            LazyCompile: ~ondata internal/streams/readable.js:717:18
+     62    9.1%          LazyCompile: ~Writable.write internal/streams/writable.js:258:36
+     59   95.2%            LazyCompile: ~value internal/console/constructor.js:258:20
+      3    4.8%            LazyCompile: ~ondata internal/streams/readable.js:717:18
+    372   35.4%        LazyCompile: ~writeGeneric internal/stream_base_commons.js:143:22
+    372  100.0%          LazyCompile: ~Socket._writeGeneric net.js:759:42
+    372  100.0%            LazyCompile: ~Socket._write net.js:796:35
+     54    3.2%      C:\Program Files\nodejs\node.exe
+      6   11.1%        LazyCompile: *Glob._process C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\glob.js:298:36
+      3   50.0%          LazyCompile: ~Glob._processGlobStar2 C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\glob.js:631:45
+      3  100.0%            LazyCompile: ~<anonymous> C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\glob.js:625:43
+      3   50.0%          LazyCompile: *Glob._processGlobStar2 C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\glob.js:631:45
+      3  100.0%            LazyCompile: ~<anonymous> C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\glob.js:625:43
+      5    9.3%        LazyCompile: *strEscape internal/util/inspect.js:464:19
+      5  100.0%          LazyCompile: ~<anonymous> internal/util/inspect.js:1408:14
+      4   80.0%            C:\Program Files\nodejs\node.exe
+      1   20.0%            LazyCompile: *formatValue internal/util/inspect.js:738:21
+      4    7.4%        LazyCompile: ~collectionNamespace C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\core\wireprotocol\shared.js:98:29
+      2   50.0%          LazyCompile: ~writeCommand C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\core\wireprotocol\write_command.js:9:22
+      2  100.0%            LazyCompile: ~update C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\core\wireprotocol\index.js:8:26
+      2   50.0%          LazyCompile: ~prepareFindCommand C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\core\wireprotocol\query.js:69:28
+      2  100.0%            LazyCompile: ~query C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\core\wireprotocol\query.js:14:15
+      3    5.6%        LazyCompile: ~messageHandler C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\cmap\connection.js:220:33
+      2   66.7%          LazyCompile: *emit events.js:264:44
+      2  100.0%            LazyCompile: ~processIncomingData C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\cmap\message_stream.js:103:29
+      1   33.3%          LazyCompile: *processIncomingData C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\cmap\message_stream.js:103:29
+      1  100.0%            LazyCompile: *writeOrBuffer internal/streams/writable.js:334:23
+      3    5.6%        LazyCompile: *pushSource C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:881:34
+      2   66.7%          LazyCompile: ~append C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:394:26
+      2  100.0%            LazyCompile: *compile C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:73:28
+      1   33.3%          LazyCompile: ~appendEscaped C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:416:40
+      1  100.0%            LazyCompile: *compile C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:73:28
+      2    3.7%        LazyCompile: ~removeColors internal/util.js:47:22
+      2  100.0%          LazyCompile: ~isBelowBreakLength internal/util/inspect.js:1743:28
+      2  100.0%            LazyCompile: ~reduceToSingleString internal/util/inspect.js:1767:30
+      2    3.7%        LazyCompile: ~header C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\express\lib\response.js:754:29
+      2  100.0%          LazyCompile: ~send C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\express\lib\response.js:107:25
+      1   50.0%            LazyCompile: ~done C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\express\lib\response.js:1006:27
+      1   50.0%            LazyCompile: *renderView C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\express-handlebars\lib\express-handlebars.js:176:19
+      2    3.7%        LazyCompile: ~createError C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\http-errors\index.js:48:22
+      2  100.0%          LazyCompile: ~error C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\send\index.js:267:45
+      2  100.0%            LazyCompile: ~onStatError C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\send\index.js:416:57
+      2    3.7%        LazyCompile: *quotedString C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\code-gen.js:118:38
+      1   50.0%          LazyCompile: ~quotedString C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:998:38
+      1  100.0%            LazyCompile: ~setupParams C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\javascript-compiler.js:1034:36
+      1   50.0%          LazyCompile: ~<anonymous> C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\code-gen.js:130:39
+      1  100.0%            C:\Program Files\nodejs\node.exe
+      2    3.7%        C:\Program Files\nodejs\node.exe
+      1   50.0%          LazyCompile: ~<anonymous> C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\build\main\lib\MongoStore.js:232:10
+      1  100.0%            LazyCompile: ~set C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\build\main\lib\MongoStore.js:230:8
+      1   50.0%          LazyCompile: *Glob._process C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\glob.js:298:36
+      1  100.0%            LazyCompile: *Glob._processGlobStar2 C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\glob.js:631:45
+      1    1.9%        LazyCompile: ~tagsStrictEqual C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\mongodb\lib\core\utils.js:190:25
+      1  100.0%          LazyCompile: ~equals C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\mongodb\lib\core\sdam\server_description.js:136:9
+      1  100.0%            LazyCompile: ~serverUpdateHandler C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\mongodb\lib\core\sdam\topology.js:512:22
+      1    1.9%        LazyCompile: ~strEscape internal/util/inspect.js:464:19
+      1  100.0%          LazyCompile: ~<anonymous> internal/util/inspect.js:1408:14
+      1  100.0%            C:\Program Files\nodejs\node.exe
+      1    1.9%        LazyCompile: ~readPackage internal/modules/cjs/loader.js:240:21
+      1  100.0%          LazyCompile: ~readPackageScope internal/modules/cjs/loader.js:271:26
+      1  100.0%            LazyCompile: ~trySelf internal/modules/cjs/loader.js:391:17
+      1    1.9%        LazyCompile: ~pipe C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\send\index.js:510:43
+      1  100.0%          LazyCompile: ~serveStatic C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\serve-static\index.js:72:31
+      1  100.0%            LazyCompile: ~handle C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\express\lib\router\layer.js:86:49
+      1    1.9%        LazyCompile: ~makeAbs C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\common.js:203:18
+      1  100.0%          LazyCompile: ~Glob._makeAbs C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\glob.js:258:36
+      1  100.0%            LazyCompile: ~Glob._process C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\glob.js:298:36
+      1    1.9%        LazyCompile: ~join path.js:367:7
+      1  100.0%          LazyCompile: ~<anonymous> C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\express-handlebars\lib\express-handlebars.js:132:53
+      1  100.0%            C:\Program Files\nodejs\node.exe
+      1    1.9%        LazyCompile: ~fromString C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\utils.js:643:20
+      1  100.0%          LazyCompile: ~CoreCursor C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\core\cursor.js:77:14
+      1  100.0%            LazyCompile: ~Cursor C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\cursor.js:104:14
+      1    1.9%        LazyCompile: ~finish C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\common.js:122:17
+      1  100.0%          LazyCompile: ~Glob._finish C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\glob.js:188:35
+      1  100.0%            LazyCompile: ~done C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\glob.js:174:17
+      1    1.9%        LazyCompile: ~expressInit C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\express\lib\middleware\init.js:29:30
+      1  100.0%          LazyCompile: ~handle C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\express\lib\router\layer.js:86:49
+      1  100.0%            LazyCompile: *next C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\express\lib\router\index.js:176:16
+      1    1.9%        LazyCompile: ~databaseNamespace C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\core\wireprotocol\shared.js:95:27
+      1  100.0%          LazyCompile: ~_command C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\core\wireprotocol\command.js:41:18
+      1  100.0%            LazyCompile: ~command C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\core\wireprotocol\command.js:19:17
+      1    1.9%        LazyCompile: ~checkInvalidHeaderChar _http_common.js:230:32
+      1  100.0%          LazyCompile: ~<anonymous> _http_outgoing.js:546:45
+      1  100.0%            LazyCompile: *hidden internal/errors.js:286:25
+      1    1.9%        LazyCompile: ~Module.load internal/modules/cjs/loader.js:916:33
+      1  100.0%          LazyCompile: ~Module._load internal/modules/cjs/loader.js:704:24
+      1  100.0%            LazyCompile: ~Module.require internal/modules/cjs/loader.js:944:36
+      1    1.9%        LazyCompile: ~Glob._process C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\glob.js:298:36
+      1  100.0%          LazyCompile: ~Glob._processGlobStar2 C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\glob.js:631:45
+      1  100.0%            LazyCompile: ~<anonymous> C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\glob\glob.js:625:43
+      1    1.9%        LazyCompile: ~FastBuffer internal/buffer.js:951:1
+      1  100.0%          LazyCompile: ~createUnsafeBuffer buffer.js:149:28
+      1  100.0%            LazyCompile: ~allocUnsafeSlow buffer.js:395:50
+      1    1.9%        LazyCompile: ~<anonymous> internal/per_context/primordials.js:23:10
+      1  100.0%          LazyCompile: ~readPackageScope internal/modules/cjs/loader.js:271:26
+      1  100.0%            LazyCompile: ~trySelf internal/modules/cjs/loader.js:391:17
+      1    1.9%        LazyCompile: *reduceToSingleString internal/util/inspect.js:1767:30
+      1  100.0%          LazyCompile: *formatRaw internal/util/inspect.js:807:19
+      1  100.0%            LazyCompile: *formatValue internal/util/inspect.js:738:21
+      1    1.9%        LazyCompile: *parse C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\minimatch\minimatch.js:271:16
+      1  100.0%          C:\Program Files\nodejs\node.exe
+      1  100.0%            LazyCompile: ~<anonymous> C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\minimatch\minimatch.js:181:26
+      1    1.9%        LazyCompile: *_command C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\core\wireprotocol\command.js:41:18
+      1  100.0%          LazyCompile: ~command C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\core\wireprotocol\command.js:19:17
+      1  100.0%            LazyCompile: ~query C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\connect-mongo\node_modules\mongodb\lib\core\wireprotocol\query.js:14:15
+      1    1.9%        LazyCompile: *PathExpression C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:289:42
+      1  100.0%          LazyCompile: *simpleSexpr C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:264:36
+      1  100.0%            LazyCompile: ~SubExpression C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\handlebars\dist\cjs\handlebars\compiler\compiler.js:236:40
+      1    1.9%        LazyCompile: *FastBuffer internal/buffer.js:951:1
+      1  100.0%          LazyCompile: ~createUnsafeBuffer buffer.js:149:28
+      1  100.0%            LazyCompile: ~allocUnsafeSlow buffer.js:395:50
+      1    1.9%        LazyCompile: *<anonymous> internal/per_context/primordials.js:23:10
+      1  100.0%          LazyCompile: ~readPackageScope internal/modules/cjs/loader.js:271:26
+      1  100.0%            LazyCompile: ~trySelf internal/modules/cjs/loader.js:391:17
+      1    1.9%        Eval: ~<anonymous> C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\mongoose\lib\drivers\node-mongodb-native\collection.js:1:1
+      1  100.0%          LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1017:37
+      1  100.0%            LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1072:37
+     38    2.3%      LazyCompile: ~writevGeneric internal/stream_base_commons.js:118:23
+     38  100.0%        LazyCompile: ~Socket._writeGeneric net.js:759:42
+     38  100.0%          LazyCompile: ~Socket._writev net.js:791:36
+     38  100.0%            LazyCompile: ~doWrite internal/streams/writable.js:367:17
+     31    1.8%      LazyCompile: ~wrapSafe internal/modules/cjs/loader.js:964:18
+     31  100.0%        LazyCompile: ~Module._compile internal/modules/cjs/loader.js:1017:37
+     31  100.0%          LazyCompile: ~Module._extensions..js internal/modules/cjs/loader.js:1072:37
+     31  100.0%            LazyCompile: ~Module.load internal/modules/cjs/loader.js:916:33
+     28    1.7%      LazyCompile: ~statSync fs.js:1081:18
+     28  100.0%        LazyCompile: ~tryStat C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\express\lib\view.js:174:17
+     28  100.0%          LazyCompile: ~resolve C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\express\lib\view.js:146:42
+     28  100.0%            LazyCompile: ~lookup C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\node_modules\express\lib\view.js:104:40
+     28    1.7%      LazyCompile: ~cpus os.js:101:14
+     28  100.0%        LazyCompile: ~<anonymous> C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\js\routes\viewsRoute.js:121:79
+     28  100.0%          C:\Program Files\nodejs\node.exe
+     28  100.0%            LazyCompile: ~<anonymous> C:\Backend\Desafios\DesafiosCoderHouse-1\desafio32\js\routes\viewsRoute.js:4:46
+
