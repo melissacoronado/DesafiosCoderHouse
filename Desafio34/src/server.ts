@@ -59,7 +59,7 @@ app.use(session({
 
 app.use('/api', RouterViewsProductos);
 app.use('/api/productos', RouterApiProductos);
-app.use("/api/user", AuthUsers);
+app.use("/", AuthUsers);
 //app.use("/scripts", express.static(__dirname + '/public/scripts'));
 //app.set('scripts', express.static(path.resolve(__dirname + '/public/scripts/'))); 
 //app.set('socketio', io);
@@ -117,7 +117,7 @@ export const ddbTable = ddbTableDynamo;
 export const sns = snsAws;
 export const snsTopic = snsTopicAws;
 
-
+/*
 io.on('connection', (socket: any) => {
     let idSock = socket.id
     let addedMail = false;
@@ -158,4 +158,4 @@ io.on('connection', (socket: any) => {
     socket.on('disconnect', () => {
         console.log(`Disconnected ${idSock}`);
     });
-});
+});*/

@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Formato: link a un repositorio en Github con el proyecto cargado. \r Sugerencia: no incluir los node_modules",
   "main": "index.js",
+  "engines": { 
+    "node" : "14.16.0" 
+  },
   "scripts": {
     "start": "node js/server.js",
     "dev": "nodemon src/server.ts",

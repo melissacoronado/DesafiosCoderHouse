@@ -1,13 +1,4 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
@@ -63,7 +54,7 @@ app.use(session({
 }));
 app.use('/api', viewsRoute_1.RouterViewsProductos);
 app.use('/api/productos', ApiProductosRoute_1.RouterApiProductos);
-app.use("/api/user", authRoute_1.AuthUsers);
+app.use("/", authRoute_1.AuthUsers);
 //app.use("/scripts", express.static(__dirname + '/public/scripts'));
 //app.set('scripts', express.static(path.resolve(__dirname + '/public/scripts/'))); 
 //app.set('socketio', io);
@@ -112,37 +103,45 @@ exports.ddb = ddbDynamo;
 exports.ddbTable = ddbTableDynamo;
 exports.sns = snsAws;
 exports.snsTopic = snsTopicAws;
-io.on('connection', (socket) => {
-    let idSock = socket.id;
+/*
+io.on('connection', (socket: any) => {
+    let idSock = socket.id
     let addedMail = false;
     console.log('A user connected' + socket.id);
+    
     //chat
-    socket.on('New chatMsg', (data) => __awaiter(void 0, void 0, void 0, function* () {
+    socket.on('New chatMsg', async (data: any) => {
         //console.log(data);
         //Leer data
-        const { mail, msg, time } = data;
+        const { mail, msg, time } = data
+
         //Agregar usuario- asociar correo con socket
-        if (!addedMail) {
+        if (!addedMail){
             socket.mail = mail;
         }
+
         //Guardar en el archivo txt
-        const newMsg = { mail: mail,
-            time: time,
-            message: msg };
-        yield opsChat.addMessage(newMsg);
+        
+        const newMsg: IChat = { mail: mail,
+                               time: time,
+                               message: msg  }
+        await opsChat.addMessage(newMsg)
+
         //Emit para mostrar en la lista
         io.emit('new message', newMsg);
-    }));
+    });
+
     //Productos
-    socket.on('dataProds', (data) => __awaiter(void 0, void 0, void 0, function* () {
-        const { nombre, descripcion, codigo, foto, precio, stock } = data;
+    socket.on('dataProds', async (data: any) => {
+        const { nombre, descripcion, codigo, foto, precio, stock } = data
         const timestamp = new Date(Date.now());
-        const newProduct = { timestamp, nombre, descripcion, codigo, foto, precio, stock };
-        console.log(newProduct);
-        yield opsProd.addProduct(newProduct);
+        const newProduct: IProd = { timestamp, nombre, descripcion, codigo, foto, precio, stock }
+        console.log(newProduct)
+        await opsProd.addProduct(newProduct)
         io.emit('ProductoAgregado', data);
-    }));
+    });
+
     socket.on('disconnect', () => {
         console.log(`Disconnected ${idSock}`);
     });
-});
+});*/ 

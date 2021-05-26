@@ -1,4 +1,4 @@
-import mongoose from 'mongoose';
+/*import mongoose from 'mongoose';
   // BRING IN YOUR SCHEMAS & MODELS
   require('../models/mensajes');
   require('../models/productos');
@@ -34,3 +34,4 @@ mongoose.connection.on('connected', function () {
     }); 
   }); 
   
+*/

@@ -52,14 +52,7 @@ router.get('/productos/vista-test', (req: Request, res: Response) => {
 
 
 
-router.get('/login', async (req: Request, res: Response) => {  
-    try{  
-        res.render('partials/main', {layout : 'login'});
-    }catch(error){
-        res.status(404).json({error : 'Error mostrando Login de usuario.'})
-        console.log(error)
-    }
-})
+
 
 router.post('/productos/vista', (req: Request, res: Response) => {
     console.log('POST /productos/vista');
@@ -79,76 +72,6 @@ router.post('/productos/vista', (req: Request, res: Response) => {
     }
 })
 
-router.post('/logout', (req, res) => {
-    try{  
-        console.log('POST logout'); 
-        if (req.session && req.session.user) {
-            let userBye = req.session.user;
-            req.session.destroy((err) => {
-                if(err) { console.log(err); }      
-            });
-            res.render('partials/main', {layout : 'logout', user: userBye });                
-        }         
-    }catch(error){
-        res.status(404).json({error : 'Error mostrando Login de usuario.'})
-        console.log(error)
-    }    
-});
 
-router.get('/info', async (req: Request, res: Response) => {  
-    try{  
-        const mensaje = 'Info';
-        //res.send(mensaje.repeat(1000));
-        let response = {
-            Plataform: process.platform,
-            NodeVer: process.version,
-            MemoryUse: process.memoryUsage(),
-            PathExec: process.env['PATH'],            
-            ProcessId: process.pid,
-            FolderC: process.cwd(),
-            numCpus: require('os').cpus().length
-        };
-        let arrArgV1 = process.argv[0];
-        let arrArgV2 = process.argv[1];
-        let arrArgV = {
-            arg1: arrArgV1,
-            arg2: arrArgV2
-        }
-        //console.log(response);
-        res.render('partials/processInfo', {layout : 'generic', ProcessInfo: response, ListaArgumentos: arrArgV });
-
-    }catch(error){
-        res.status(404).json({error : 'Error mostrando Login de usuario.'})
-        console.log(error)
-    }
-})
-
-router.get('/infoconsole', async (req: Request, res: Response) => {  
-    try{  
-        const mensaje = 'Info';
-        //res.send(mensaje.repeat(1000));
-        let response = {
-            Plataform: process.platform,
-            NodeVer: process.version,
-            MemoryUse: process.memoryUsage(),
-            PathExec: process.env['PATH'],            
-            ProcessId: process.pid,
-            FolderC: process.cwd(),
-            numCpus: require('os').cpus().length
-        };
-        let arrArgV1 = process.argv[0];
-        let arrArgV2 = process.argv[1];
-        let arrArgV = {
-            arg1: arrArgV1,
-            arg2: arrArgV2
-        }
-        console.log(response);
-        res.render('partials/processInfo', {layout : 'generic', ProcessInfo: response, ListaArgumentos: arrArgV });
-
-    }catch(error){
-        res.status(404).json({error : 'Error mostrando Login de usuario.'})
-        console.log(error)
-    }
-})
 
 export const RouterViewsProductos: express.Router = router;

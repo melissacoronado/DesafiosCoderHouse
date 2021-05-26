@@ -4,16 +4,28 @@
 <div class="row">
     <form action="" id="formProds" enctype="application/json">
         <div class="form-group">
-            <label for="Title">Producto</label>
-            <input type="text" autocomplete="false" class="form-control" id="title" name="title" placeholder="Nombre Producto">
+            <label for="Producto">Producto</label>
+            <input type="text" autocomplete="false" class="form-control" id="nombre" name="nombre" placeholder="Nombre Producto">
         </div>
         <div class="form-group">
-            <label for="Price">Precio</label>
-            <input type="number" autocomplete="false" class="form-control" id="price" name="price" placeholder="0000">
+            <label for="Descripcion">Descripción</label>
+            <input type="text" autocomplete="false" class="form-control" id="descripcion" name="descripcion" placeholder="Descripcion Producto">
         </div>
         <div class="form-group">
-            <label for="Thumbnail">Foto</label>
-            <input type="text" autocomplete="false" class="form-control" id="thumbnail" name="thumbnail" placeholder="Url Foto">
+            <label for="Codigo">Código</label>
+            <input type="text" autocomplete="false" class="form-control" id="codigo" name="codigo" placeholder="Codigo Producto">
+        </div>        
+        <div class="form-group">
+            <label for="Foto">Foto</label>
+            <input type="text" autocomplete="false" class="form-control" id="foto" name="foto" placeholder="Url Foto">
+        </div>
+        <div class="form-group">
+            <label for="Precio">Precio</label>
+            <input type="number" autocomplete="false" class="form-control" id="precio" name="precio" placeholder="0000">
+        </div>
+        <div class="form-group">
+            <label for="Stock">Stock</label>
+            <input type="number" autocomplete="false" class="form-control" id="stock" name="stock" placeholder="0000">
         </div>
         <div class="text-center" style="margin-top: 2%;">
             <button id="bttSaveProds" class="btn btn-primary">Guardar</button>
@@ -32,9 +44,9 @@
             <tbody>
                 {{#each ListaProductos}}
                     <tr>
-                    <td class="middtext col-md-4">{{this.title}}</td>
-                    <td class="middtext col-md-4">{{this.price}}</td>
-                    <td class="middtext col-md-4"><img class="imgTbl img-fluid img-thumbnail" src="{{this.thumbnail}}"></td>
+                    <td class="middtext col-md-4">{{this.nombre}}</td>
+                    <td class="middtext col-md-4">{{this.precio}}</td>
+                    <td class="middtext col-md-4"><img class="imgTbl img-fluid img-thumbnail" src="{{this.foto}}"></td>
                     </<tr>
                 {{else}}
                     <tr>
