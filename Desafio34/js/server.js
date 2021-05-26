@@ -12,6 +12,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.snsTopic = exports.sns = exports.ddbTable = exports.ddb = void 0;
 const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
 const ApiProductosRoute_1 = require("./routes/ApiProductosRoute");
@@ -25,6 +26,7 @@ const cookie_parser_1 = __importDefault(require("cookie-parser"));
 const MongoStore = require('connect-mongo');
 const compression = require('compression');
 const logger_1 = require("./helper/logger");
+var cluster = require('cluster');
 const handlebars = require('express-handlebars');
 const app = express_1.default();
 const http = require('http').Server(app);
@@ -65,20 +67,51 @@ app.use("/api/user", authRoute_1.AuthUsers);
 //app.use("/scripts", express.static(__dirname + '/public/scripts'));
 //app.set('scripts', express.static(path.resolve(__dirname + '/public/scripts/'))); 
 //app.set('socketio', io);
-http.listen(puerto, () => {
-    console.log('Servidor escuchando en puerto 8080');
-    logger_1.logger.trace("Servidor escuchando en puerto 8080");
-    logger_1.logger.debug("Servidor escuchando en puerto 8080");
-    logger_1.logger.info("Servidor escuchando en puerto 8080");
-    logger_1.logger.warn("Servidor escuchando en puerto 8080");
-}).on("error", (err) => {
-    console.log(err);
-    logger_1.logger.error(err);
-    logger_1.logger.fatal(err);
-});
-/*module.exports = {
-    log4js: logger
-  };*/
+var ddbDynamo;
+var ddbTableDynamo;
+var snsAws;
+var snsTopicAws;
+//console.log(cluster.isMaster);
+if (cluster.isMaster) {
+    // Count the machine's CPUs
+    var cpuCount = require('os').cpus().length;
+    // Create a worker for each CPU
+    for (var i = 0; i < cpuCount; i += 1) {
+        cluster.fork();
+    }
+    // Listen for terminating workers
+    cluster.on('exit', function (worker) {
+        // Replace the terminated workers
+        console.log('Worker ' + worker.id + ' died :(');
+        cluster.fork();
+    });
+    // Code to run if we're in a worker process
+}
+else {
+    var AWS = require('aws-sdk');
+    AWS.config.region = process.env.REGION;
+    var snsAws = new AWS.SNS();
+    ddbDynamo = new AWS.DynamoDB();
+    //console.log(`sns ${sns}`);
+    ddbTableDynamo = process.env.STARTUP_SIGNUP_TABLE;
+    //console.log(ddbTable);
+    snsTopicAws = process.env.NEW_SIGNUP_TOPIC;
+    http.listen(puerto, () => {
+        console.log('Servidor escuchando en puerto 8080');
+        logger_1.logger.trace("Servidor escuchando en puerto 8080");
+        logger_1.logger.debug("Servidor escuchando en puerto 8080");
+        logger_1.logger.info("Servidor escuchando en puerto 8080");
+        logger_1.logger.warn("Servidor escuchando en puerto 8080");
+    }).on("error", (err) => {
+        console.log(err);
+        logger_1.logger.error(err);
+        logger_1.logger.fatal(err);
+    });
+}
+exports.ddb = ddbDynamo;
+exports.ddbTable = ddbTableDynamo;
+exports.sns = snsAws;
+exports.snsTopic = snsTopicAws;
 io.on('connection', (socket) => {
     let idSock = socket.id;
     let addedMail = false;

@@ -21,23 +21,7 @@ let opsChat = new mensajes_1.ChatMsg();
 let opsProd = new productos_1.Producto();
 let opsUsrs = new users_1.Usuario();
 var router = express_1.default.Router();
-// middleware function to check for logged-in users
-var sessionChecker = (req, res, next) => {
-    if (req.session) {
-        if (!req.session.user) {
-            res.redirect('/api/login');
-        }
-        //console.log('Sesion createdAt'+req.session.createdAt);
-        console.log('MaxAge' + req.session.cookie.maxAge);
-        //res.redirect('/api/productos/vista');
-    }
-    else {
-        console.log('No Sesion ');
-        res.redirect('/api/login');
-    }
-    next();
-};
-router.get('/productos/vista', sessionChecker, (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+router.get('/productos/vista', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         console.log('GET /productos/vista');
         if (req.session) {
@@ -84,7 +68,7 @@ router.get('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* (
         console.log(error);
     }
 }));
-router.post('/productos/vista', sessionChecker, (req, res) => {
+router.post('/productos/vista', (req, res) => {
     console.log('POST /productos/vista');
     if (req.body.nombre && req.body.email && req.session) {
         //verificar si usuario existe sino crear
@@ -119,6 +103,33 @@ router.post('/logout', (req, res) => {
     }
 });
 router.get('/info', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const mensaje = 'Info';
+        //res.send(mensaje.repeat(1000));
+        let response = {
+            Plataform: process.platform,
+            NodeVer: process.version,
+            MemoryUse: process.memoryUsage(),
+            PathExec: process.env['PATH'],
+            ProcessId: process.pid,
+            FolderC: process.cwd(),
+            numCpus: require('os').cpus().length
+        };
+        let arrArgV1 = process.argv[0];
+        let arrArgV2 = process.argv[1];
+        let arrArgV = {
+            arg1: arrArgV1,
+            arg2: arrArgV2
+        };
+        //console.log(response);
+        res.render('partials/processInfo', { layout: 'generic', ProcessInfo: response, ListaArgumentos: arrArgV });
+    }
+    catch (error) {
+        res.status(404).json({ error: 'Error mostrando Login de usuario.' });
+        console.log(error);
+    }
+}));
+router.get('/infoconsole', (req, res) => __awaiter(void 0, void 0, void 0, function* () {
     try {
         const mensaje = 'Info';
         //res.send(mensaje.repeat(1000));
