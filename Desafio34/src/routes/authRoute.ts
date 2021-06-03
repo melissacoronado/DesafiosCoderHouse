@@ -29,9 +29,9 @@ router.post('/signup', async (req: Request, res: Response) => {
         console.log(`ddb ${ddb} ddbTable ${ddbTable} item ${item}`);
 
         ddb.putItem({
-            'TableName': ddbTable,
-            'Item': item,
-            'Expected': { email: { Exists: false } }        
+            TableName: "usuarios",//ddbTable,
+            Item: item,
+            Expected: { email: { Exists: false } }        
         }, function(err: any, data: any) {
             console.log(`err ${err} data ${data}`)
             if (err) {
@@ -142,6 +142,15 @@ router.get('/infoconsole', async (req: Request, res: Response) => {
 
 router.get('/saludar', async (req: Request, res: Response) => {  
     try{  
+        const mailOptions2 = {
+            from: 'Módulo Node.js',
+            to: 'ford.blanda@ethereal.email',
+            subject: "asunto",
+            html: "mensaje"
+        }
+
+
+
         res.status(200).json({error : 'Hola aws.'})
     }catch(error){
         res.status(404).json({error : 'Error mostrando Login de usuario.'})
