@@ -28,9 +28,7 @@ export const schema = buildSchema(`
 
 let getProducto = async function(args: any) { 
     var id = args.id;
-    console.log(id);
     opsProd.productos =  await opsProd.showProducts();
-    console.log(opsProd.productos);
     const product =  opsProd.productos.find(x => x.id === id)
 
     return product;
