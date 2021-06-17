@@ -1,0 +1,78 @@
+Started phase 0, duration: 1s @ 22:03:56(-0300) 2021-05-18
+Report @ 22:04:06(-0300) 2021-05-18
+Elapsed time: 10 seconds
+  Scenarios launched:  20
+  Scenarios completed: 0
+  Requests completed:  253
+  Mean response/sec: 26.51
+  Response time (msec):
+    min: 10
+    max: 961
+    median: 375
+    p95: 457.9
+    p99: 887.4
+  Codes:
+    200: 253
+
+Report @ 22:04:16(-0300) 2021-05-18
+Elapsed time: 20 seconds
+  Scenarios launched:  0
+  Scenarios completed: 0
+  Requests completed:  275
+  Mean response/sec: 27.51
+  Response time (msec):
+    min: 328
+    max: 471
+    median: 384
+    p95: 442.5
+    p99: 470.3
+  Codes:
+    200: 275
+
+Report @ 22:04:26(-0300) 2021-05-18
+Elapsed time: 30 seconds
+  Scenarios launched:  0
+  Scenarios completed: 0
+  Requests completed:  274
+  Mean response/sec: 27.55
+  Response time (msec):
+    min: 309
+    max: 503
+    median: 390
+    p95: 452.8
+    p99: 472.1
+  Codes:
+    200: 274
+
+Report @ 22:04:33(-0300) 2021-05-18
+Elapsed time: 38 seconds
+  Scenarios launched:  0
+  Scenarios completed: 20
+  Requests completed:  198
+  Mean response/sec: 24.32
+  Response time (msec):
+    min: 304
+    max: 493
+    median: 380
+    p95: 473.6
+    p99: 493
+  Codes:
+    200: 198
+
+All virtual users finished
+Summary report @ 22:04:33(-0300) 2021-05-18
+  Scenarios launched:  20
+  Scenarios completed: 20
+  Requests completed:  1000
+  Mean response/sec: 26.45
+  Response time (msec):
+    min: 10
+    max: 961
+    median: 384
+    p95: 455.5
+    p99: 487.5
+  Scenario counts:
+    0: 20 (100%)
+  Codes:
+    200: 1000
+
