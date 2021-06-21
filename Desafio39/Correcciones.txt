@@ -1,0 +1,18 @@
+Facundo
+Meliiii, como andas? Ahi estaba viendo el proyecto, y te recomiendo un par de cositas:
+
+El proyecto yo personalmente no lo subdividiria asi en carpetas por cada uno de los entregables porque si quiero clonar 
+solo el Proyecto 39 tengo que descargar todos los otros también. Lo que te recomiendo que hagas es que vayas creando 
+nuevas Branchs por cada nuevo proyecto (ahora dejalo así, no hay problema, pero para los proyectos futuros te va a servir 
+mas hacerlo de esta forma).
+Acordate de usar las variables de entorno para todo lo que sean variables globales para que estén unificadas en un solo 
+lugar (los puertos, las URL, etc)
+Deberías tener un comando en el PackageJSON que sea algo como "test": "mocha ..." para que al ejecutar ese comando se 
+corran los tests automáticamente.
+Todos los tests que hagas en tu proyecto tienen que ir con la extensión "test." para encontrarlos fácilmente en el 
+proyecto, y que las librerías los encuentren automáticamente. Ejemplo: my-test.test.js o my-test.test.ts
+En realidad, son las funciones de Axios las que tenes que ejecutar en el it(), para ver si retornan lo que vos esperas 
+que retornen, y que el Status code sea el que esperas que sea.
+
+
+Con respecto a lo que hablamos por Slack que te fallaba el test. Como lo estabas ejecutando?
