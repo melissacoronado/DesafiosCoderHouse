@@ -7,8 +7,8 @@
     "start": "node js/server.js",
     "dev": "nodemon src/server.ts",
     "build": "tsc -p .",
-    "startProf": "0x js/server.js",
-    "test": "node autocannon.js"
+    "test1": "mocha js/tests/mocha.test.js",
+    "test2": "mocha js/tests/chaiSupertest.test.js"
   },
   "keywords": [],
   "author": "",
