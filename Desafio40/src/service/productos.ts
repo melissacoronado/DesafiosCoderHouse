@@ -20,6 +20,7 @@ interface IProducto{
     //Metodos
     addProduct(producto: IProd): void;
     showProducts(): void;
+    showProductById(idprod: string): void;
     updateProducts(idProd: string, nombre:string, descripcion: string, codigo: number, foto:string, precio:number, stock:number): void;
     deleteProduct(idProd: string):void;
     //generateProducts(cant: number): void;
@@ -63,6 +64,14 @@ export class Producto implements  IProducto{
                     .catch( (error: any) => console.log(error));
                          
             return  this.productos; 
+        }catch(error){
+            throw error
+        }
+    }
+
+    showProductById = async (idProd: string) => {
+        try{
+           return await productosModel.findOne({_id: idProd}).exec();
         }catch(error){
             throw error
         }

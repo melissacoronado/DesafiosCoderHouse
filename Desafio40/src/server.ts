@@ -1,7 +1,7 @@
 import { Socket } from 'dgram';
 import express, {Application, Request, Response} from 'express'
 import path from 'path'
-import { RouterApiProductos } from './routes/ApiProductosRoute';
+import { RouterProductos } from './routes/productosRoute';
 import { RouterViewsProductos } from './routes/viewsRoute';
 import { AuthUsers } from './routes/authRoute';
 import { IProd, Producto } from './service/productos';
@@ -16,6 +16,10 @@ export const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 import { Usuario } from './service/users'
 
+const dotenv = require('dotenv');
+dotenv.config();
+let puerto = process.env.port || 3000;
+
 
 const handlebars = require('express-handlebars');
 const app:Application = express()
@@ -26,8 +30,6 @@ const optionsMongoAtlas = {useNewUrlParser: true, useUnifiedTopology: true}
 
 let opsProd = new Producto()
 let opsChat = new ChatMsg();
-
-let puerto = process.env.port || 8080;
 
 
 app.use('/api', express.static(__dirname + '/..'+ '/public')); //Al principio
@@ -81,7 +83,7 @@ app.use(passport.session());
 
 
 app.use('/api', RouterViewsProductos);
-app.use('/api/productos', RouterApiProductos);
+app.use('/api/productos', RouterProductos);
 app.use("/", AuthUsers);
 //app.use("/scripts", express.static(__dirname + '/public/scripts'));
 //app.set('scripts', express.static(path.resolve(__dirname + '/public/scripts/'))); 

@@ -40,7 +40,6 @@ router.get('/login', async (req: Request, res: Response) => {
 
 router.post('/login', passport.authenticate('local', { failureRedirect: '/login' }),
   function(req, res) {
-      console.log('POST Login');
     let userLogin = (<any>req).user;
     console.log(userLogin);
     res.render('partials/main', {layout : 'home', userEmail: userLogin.email});
