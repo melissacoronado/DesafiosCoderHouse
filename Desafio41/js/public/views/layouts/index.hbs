@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+{{> head}}
+
+<body>
+    {{> header}}   
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                {{{body}}}
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3"></div>
+            <div class="col-md-6">
+                {{> chat ListaMensajesChat=this.ListaMsjChat }}
+            </div>
+            <div class="col-md-3"></div>
+        </div>
+    </div> 
+    <script src="/socket.io/socket.io.js"></script> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> 
+    <!--script src="/scripts/funcs.js"></script-->
+
+    <script>
+        const socket = io();
+        let usermail = "";
+        //Chat
+        $('#bttSendMsg').on('click', function(event) {
+            if($('#msg').val() !== ""){
+                if(usermail == ""){
+                    if($('#correo').val()!==""){
+                        usermail =  $('#correo').val();
+                    }
+                }
+                if(usermail!==""){
+                    let date = new Date(Date.now());
+                    date = `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()} ${date.getHours()}:${date.getMinutes()}:${date.getSeconds()}`;
+                    socket.emit('New chatMsg', {
+                        msg: $('#msg').val(),
+                        mail: usermail,
+                        time: date
+                    });
+                }else{
+                    alert("Debe ingrear un correo para enviar mensajes.");
+                }
+            }else{
+                alert("Debe ingrear un mensaje para enviar.");
+            }
+        });
+
+        socket.on('new message', (data) => {           
+            $("#ListChatMsg").append($('<li>')
+                                     .append($('<span>')
+                                             .addClass('correoChat')
+                                             .text(`${data.mail} `)
+                                     )
+                                     .append($('<span>')
+                                             .addClass('timeChat')
+                                             .text(`[${data.time}]: `)
+                                     )
+                                     .append($('<span>')
+                                             .addClass('msjChat')
+                                             .text(data.message)
+                                     )
+                                     
+                                )
+                $('#msg, #correo').val("")
+            });
+
+        //Agregar productos
+        $('#bttSaveProds').on('click', function(event) {
+            event.preventDefault();
+
+            socket.emit('dataProds', {
+                title: $('#title').val(),
+                price: $('#price').val(),
+                thumbnail: $('#thumbnail').val()
+            });
+        });
+
+        socket.on('ProductoAgregado', data => {
+
+            if($("#tblProds").find(' tbody tr:first')[0].innerText == "No hay productos"){
+                $("#tblProds tbody tr").remove(); 
+            }
+            //Mostrar producto en la tabla
+            const { title, price, thumbnail } = data  
+            $("#tblProds").find('tbody')
+                .append($('<tr>')
+                    .append($('<td>')
+                        .text(title)
+                    )
+                    .append($('<td>')
+                        .text(price)
+                    )
+                    .append($('<td>')
+                        .append($('<img>')
+                            .attr('src', thumbnail)
+                            .addClass('imgTbl img-fluid img-thumbnail')
+                        )
+                    )
+                );             
+            $('#title, #price, #thumbnail').val("")
+        });
+            
+    </script>
+</body>
+</html>
