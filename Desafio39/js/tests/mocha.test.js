@@ -12,9 +12,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const productos_1 = require("../service/productos");
 const assert = require('assert').strict;
 let opsProd = new productos_1.Producto();
+const request = require('supertest')('http://localhost:8080');
 describe("test de integración de Productos", function () {
     it('debería mostrar listado de productos existentes', () => __awaiter(this, void 0, void 0, function* () {
-        let listado = yield opsProd.showProducts();
+        //let listado = await opsProd.showProducts();
+        let listado = yield request.get('/api/productos/');
+        //expect(listado).to.include.keys('data')
         assert.notEqual(listado.length, 0);
+        //done();
     }));
 });

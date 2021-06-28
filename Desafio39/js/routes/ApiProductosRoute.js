@@ -16,6 +16,7 @@ exports.RouterApiProductos = void 0;
 const express_1 = __importDefault(require("express"));
 const productos_1 = require("../service/productos");
 const logger_1 = require("../helper/logger");
+//import { exception } from 'node:console';
 let opsProd = new productos_1.Producto();
 var router = express_1.default.Router();
 router.get('/', (req, res) => __awaiter(void 0, void 0, void 0, function* () {

@@ -1,7 +1,7 @@
 import express, {Application, Request, Response} from 'express'
 import { IProd, Producto } from '../service/productos'
 import { logger, loggerError, loggerWarn } from '../helper/logger';
-import { exception } from 'node:console';
+//import { exception } from 'node:console';
 
 let opsProd = new Producto()
 
