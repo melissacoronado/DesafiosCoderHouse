@@ -13,11 +13,23 @@ import { logger } from './helper/logger';
 export const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 import { Usuario } from './service/users'
+import ProductosDbDao from './DAO/productos.BD.DAO';
+import ProductosFileDao from './DAO/productos.File.DAO';
+import { Producto } from './DAO/productos.DAO';
 //import { IProd } from './DAO/productos.DAO';
 
-const dotenv = require('dotenv');
-dotenv.config();
-let puerto = process.env.port || 3000;
+const dotenv = require('dotenv').config();
+let puerto = process.env.port || 3030;
+
+//dependiendo opcion ingresada hacer new?
+const opcDao = process.env.almacenamiento;
+export let opsProd = new Producto();
+if(opcDao === "Mongo"){
+    opsProd = new ProductosDbDao()
+}else{
+    opsProd = new ProductosFileDao()
+}
+console.log(opsProd);
 
 
 const handlebars = require('express-handlebars');
@@ -29,10 +41,6 @@ const optionsMongoAtlas = {useNewUrlParser: true, useUnifiedTopology: true}
 
 
 
-
-//dependiendo opcion ingresada hacer new?
-export const opcDao = process.argv;
-console.log(opcDao);
 
 let opsChat = new ChatMsg();
 
@@ -95,11 +103,11 @@ app.use("/", AuthUsers);
 
 
 http.listen(puerto, ()=> {
-    console.log('Servidor escuchando en puerto 8080')
-    logger.trace("Servidor escuchando en puerto 8080");
-    logger.debug("Servidor escuchando en puerto 8080");
-    logger.info("Servidor escuchando en puerto 8080");
-    logger.warn("Servidor escuchando en puerto 8080");
+    console.log(`Servidor escuchando en puerto ${puerto}`)
+    logger.trace(`Servidor escuchando en puerto ${puerto}`);
+    logger.debug(`Servidor escuchando en puerto ${puerto}`);
+    logger.info(`Servidor escuchando en puerto ${puerto}`);
+    logger.warn(`Servidor escuchando en puerto ${puerto}`);
 }).on("error", (err: any)=>{
     console.log(err)
     logger.error(err);

@@ -1,4 +1,4 @@
-import CustomError from '../helper/CustomError.js'
+import CustomError from '../helper/CustomError'
 
 export interface IProd{  
     //Propiedades
@@ -15,7 +15,7 @@ export interface IProd{
 export class Producto {
     
     async showProducts() {
-        throw new CustomError(500, 'falta implementar getAll!', '')
+        return [];
     }
     
     async addProduct (producto: IProd) {
@@ -23,7 +23,7 @@ export class Producto {
     }
 
     async showProductById (idProd: string) {
-        throw new CustomError(500, 'falta implementar showProducts!','')
+        return [];
     }
 
     async updateProducts (idProd: string, nombre:string, descripcion: string, codigo: number, foto:string, precio:number, stock:number) {

@@ -1,2 +1,3 @@
 [2021-06-22T21:54:30.495] [ERROR] archivo2 - Cast to ObjectId failed for value "60591azfzfc89z1e47af8645" at path "_id" for model "productos"
 [2021-06-22T21:55:26.156] [ERROR] archivo2 - Cast to ObjectId failed for value "60591azfzfc89z1e47af8645" at path "_id" for model "productos"
+[2021-06-30T19:30:44.585] [ERROR] archivo2 - Cannot read property 'length' of undefined
