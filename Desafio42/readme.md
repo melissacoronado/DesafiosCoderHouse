@@ -1,13 +1,13 @@
---------------------------Desafio 40------------------------------
+--------------------------Desafio 42------------------------------
 Formato: link a un repositorio en Github con el proyecto cargado. 
 Sugerencia: no incluir los node_modules
 
->> Consigna:  Separar en capas el proyecto que venimos realizando, exponiendo la capa de ruteo, el controlador, la lógica de negocio con los casos de uso y la capa de persistencia. 
+>> Consigna:  Sobre el proyecto del último desafío entregable, utilizar dotenv pasando todas las configuraciones realizadas por línea de comandos a dos archivos: development.env y production.env. Trabajar con un esquema de múltiples entornos.
 
-Crear una factory que permita elegir con qué sistema de almacenamiento voy a trabajar (MongoDB, MySQL, File, Memory, etc), tomando la opción de la línea de comandos.
+1.- Las configuraciones realizadas podrían ser: tipo de persistencia, credenciales para login con redes sociales, habilitación de modo cluster entre otras presentes en los proyectos de cada uno.
+    * En modo desarrollo, elegir el tipo de persistencia Memory ó File system.
+    * En modo producción, elegir el tipo de persistencia MongoDB ó MySQL/SQLite3.
+2.- La única configuración que no va a ser manejada con dotenv va a ser el puerto de escucha del servidor. Utilizar minimist o yargs para realizar esta configuración. En el caso de no pasar este parámetro por línea de comandos, tomar como default el puerto 8080.
 
-Cada uno de estos casos de persistencia, deberán ser implementados usando el patrón singleton que impida crear nuevas instancias de estos mecanismos de acceso a los datos.
-
-Comprobar que si llamo a la factory dos veces, con una misma opción elegida, devuelva la misma instancia.
 
 

@@ -16,9 +16,9 @@ export const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 import { Usuario } from './service/users'
 
-const dotenv = require('dotenv');
-dotenv.config();
-let puerto = process.env.port || 3000;
+const config = require('./helper/config');
+
+let puerto = require('minimist')(process.argv.slice(2)) || 8080;
 
 
 const handlebars = require('express-handlebars');
