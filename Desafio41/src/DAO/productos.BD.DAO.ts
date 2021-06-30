@@ -4,10 +4,9 @@ import {productosModel} from '../models/productos'
 class ProductosDbDao extends Producto {
     productos:IProd[] = []
     
-    async getAll() {
+    async showProducts() {
         try{
-
-            await productosModel.find({})
+            return await productosModel.find({})
                     .then( (productos: any) => {
                       if(productos.length > 0){
                         this.productos = productos.map((val: any) => <IProd>{
@@ -23,11 +22,62 @@ class ProductosDbDao extends Producto {
                       } 
                     })
                     .catch( (error: any) => console.log(error));
-                         
-            return  this.productos; 
+
         }catch(error){
             throw error
         }
     }
+
+    async addProduct (producto: IProd) {
+        try{            
+            const Msg = new productosModel(producto)
+            await Msg.save()
+            .then(() => console.log("Producto Guardado"))
+            .catch( (err: any) => console.log(err));
+
+        }catch(error){            
+            console.error(error)
+            throw error
+        }
+    }
+
+    async showProductById (idProd: string) {
+        try{
+            return await productosModel.findOne({_id: idProd}).exec();
+         }catch(error){
+             throw error
+         }
+    }
+
+    async updateProducts (idProd: string, nombre:string, descripcion: string, codigo: number, foto:string, precio:number, stock:number) {
+        try{
+            await productosModel.updateOne({_id: idProd}, { $set:{
+                timestamp: new Date(Date.now()),
+                nombre: nombre,
+                descripcion: descripcion,
+                codigo: codigo,
+                foto: foto,
+                precio: precio,
+                stock: stock
+                }
+            })
+            .then(() => console.log("Producto Actualizado"))
+            .catch( (err: any) => console.log(err));
+
+        }catch(error){
+            throw error
+        }
+    }
+
+    async deleteProduct (idProd: string) {
+        try{
+            await productosModel.deleteOne({_id: idProd});
+            console.log("Producto Eliminado")
+
+        }catch(error){
+            throw error
+        }
+    }  
    
 }
+export default ProductosDbDao

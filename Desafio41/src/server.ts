@@ -2,9 +2,7 @@ import { Socket } from 'dgram';
 import express, {Application, Request, Response} from 'express'
 import path from 'path'
 import { RouterProductos } from './routes/productosRoute';
-import { RouterViewsProductos } from './routes/viewsRoute';
 import { AuthUsers } from './routes/authRoute';
-import { IProd, Producto } from './service/productos';
 import { IChat, ChatMsg } from './service/mensajes';
 const db = require('./service/bd') //Para conex a la bd moongose
 const session = require('express-session');
@@ -15,6 +13,7 @@ import { logger } from './helper/logger';
 export const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 import { Usuario } from './service/users'
+//import { IProd } from './DAO/productos.DAO';
 
 const dotenv = require('dotenv');
 dotenv.config();
@@ -28,7 +27,13 @@ const io = require('socket.io')(http, { autoConnect: false/*, transports: ['webs
 
 const optionsMongoAtlas = {useNewUrlParser: true, useUnifiedTopology: true}
 
-let opsProd = new Producto()
+
+
+
+//dependiendo opcion ingresada hacer new?
+export const opcDao = process.argv;
+console.log(opcDao);
+
 let opsChat = new ChatMsg();
 
 
@@ -82,7 +87,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 
-app.use('/api', RouterViewsProductos);
 app.use('/api/productos', RouterProductos);
 app.use("/", AuthUsers);
 //app.use("/scripts", express.static(__dirname + '/public/scripts'));
@@ -107,7 +111,7 @@ http.listen(puerto, ()=> {
     log4js: logger
   };*/
 
-
+/*
 io.on('connection', (socket: any) => {
     let idSock = socket.id
     let addedMail = false;
@@ -148,4 +152,4 @@ io.on('connection', (socket: any) => {
     socket.on('disconnect', () => {
         console.log(`Disconnected ${idSock}`);
     });
-});
+});*/

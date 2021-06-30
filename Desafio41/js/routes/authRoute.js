@@ -51,7 +51,6 @@ router.get('/login', (req, res) => __awaiter(void 0, void 0, void 0, function* (
     }
 }));
 router.post('/login', exports.passport.authenticate('local', { failureRedirect: '/login' }), function (req, res) {
-    console.log('POST Login');
     let userLogin = req.user;
     console.log(userLogin);
     res.render('partials/main', { layout: 'home', userEmail: userLogin.email });

@@ -1,24 +1,14 @@
 "use strict";
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.passport = void 0;
+exports.opcDao = exports.passport = void 0;
 const express_1 = __importDefault(require("express"));
 const path_1 = __importDefault(require("path"));
-const ApiProductosRoute_1 = require("./routes/ApiProductosRoute");
+const productosRoute_1 = require("./routes/productosRoute");
 const viewsRoute_1 = require("./routes/viewsRoute");
 const authRoute_1 = require("./routes/authRoute");
-const productos_1 = require("./service/productos");
 const mensajes_1 = require("./service/mensajes");
 const db = require('./service/bd'); //Para conex a la bd moongose
 const session = require('express-session');
@@ -29,14 +19,18 @@ const logger_1 = require("./helper/logger");
 exports.passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const users_1 = require("./service/users");
+const dotenv = require('dotenv');
+dotenv.config();
+let puerto = process.env.port || 3000;
 const handlebars = require('express-handlebars');
 const app = express_1.default();
 const http = require('http').Server(app);
 const io = require('socket.io')(http, { autoConnect: false /*, transports: ['websocket']*/ });
 const optionsMongoAtlas = { useNewUrlParser: true, useUnifiedTopology: true };
-let opsProd = new productos_1.Producto();
+//dependiendo opcion ingresada hacer new?
+exports.opcDao = process.argv;
+console.log(exports.opcDao);
 let opsChat = new mensajes_1.ChatMsg();
-let puerto = process.env.port || 8080;
 app.use('/api', express_1.default.static(__dirname + '/..' + '/public')); //Al principio
 app.use(express_1.default.json());
 app.use(express_1.default.urlencoded({ extended: true }));
@@ -77,7 +71,7 @@ exports.passport.use(new LocalStrategy(function (username, email, done) {
 app.use(exports.passport.initialize());
 app.use(exports.passport.session());
 app.use('/api', viewsRoute_1.RouterViewsProductos);
-app.use('/api/productos', ApiProductosRoute_1.RouterApiProductos);
+app.use('/api/productos', productosRoute_1.RouterProductos);
 app.use("/", authRoute_1.AuthUsers);
 //app.use("/scripts", express.static(__dirname + '/public/scripts'));
 //app.set('scripts', express.static(path.resolve(__dirname + '/public/scripts/'))); 
@@ -96,37 +90,45 @@ http.listen(puerto, () => {
 /*module.exports = {
     log4js: logger
   };*/
-io.on('connection', (socket) => {
-    let idSock = socket.id;
+/*
+io.on('connection', (socket: any) => {
+    let idSock = socket.id
     let addedMail = false;
     console.log('A user connected' + socket.id);
+    
     //chat
-    socket.on('New chatMsg', (data) => __awaiter(void 0, void 0, void 0, function* () {
+    socket.on('New chatMsg', async (data: any) => {
         //console.log(data);
         //Leer data
-        const { mail, msg, time } = data;
+        const { mail, msg, time } = data
+
         //Agregar usuario- asociar correo con socket
-        if (!addedMail) {
+        if (!addedMail){
             socket.mail = mail;
         }
+
         //Guardar en el archivo txt
-        const newMsg = { mail: mail,
-            time: time,
-            message: msg };
-        yield opsChat.addMessage(newMsg);
+        
+        const newMsg: IChat = { mail: mail,
+                               time: time,
+                               message: msg  }
+        await opsChat.addMessage(newMsg)
+
         //Emit para mostrar en la lista
         io.emit('new message', newMsg);
-    }));
+    });
+
     //Productos
-    socket.on('dataProds', (data) => __awaiter(void 0, void 0, void 0, function* () {
-        const { nombre, descripcion, codigo, foto, precio, stock } = data;
+    socket.on('dataProds', async (data: any) => {
+        const { nombre, descripcion, codigo, foto, precio, stock } = data
         const timestamp = new Date(Date.now());
-        const newProduct = { timestamp, nombre, descripcion, codigo, foto, precio, stock };
-        console.log(newProduct);
-        yield opsProd.addProduct(newProduct);
+        const newProduct: IProd = { timestamp, nombre, descripcion, codigo, foto, precio, stock }
+        console.log(newProduct)
+        await opsProd.addProduct(newProduct)
         io.emit('ProductoAgregado', data);
-    }));
+    });
+
     socket.on('disconnect', () => {
         console.log(`Disconnected ${idSock}`);
     });
-});
+});*/ 

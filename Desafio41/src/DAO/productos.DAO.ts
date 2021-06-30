@@ -14,31 +14,23 @@ export interface IProd{
 
 export class Producto {
     
-    async getAll() {
+    async showProducts() {
         throw new CustomError(500, 'falta implementar getAll!', '')
     }
     
-    addProduct = async (producto: IProd) => {
+    async addProduct (producto: IProd) {
         throw new CustomError(500, 'falta implementar addProduct!','')
     }
 
-    showProducts = async () => {
-        try{
-            throw new CustomError(500, 'falta implementar showProducts!','')
-        }catch(error){
-            throw error
-        }
+    async showProductById (idProd: string) {
+        throw new CustomError(500, 'falta implementar showProducts!','')
     }
 
-    showProductById = async (idProd: string) => {
-        throw new CustomError(500, 'falta implementar showProductById!','')
-    }
-
-    updateProducts = async (idProd: string, nombre:string, descripcion: string, codigo: number, foto:string, precio:number, stock:number) => {
+    async updateProducts (idProd: string, nombre:string, descripcion: string, codigo: number, foto:string, precio:number, stock:number) {
         throw new CustomError(500, 'falta implementar updateProducts!','')
     }
 
-    deleteProduct = async (idProd: string) => {
+    async deleteProduct (idProd: string) {
         throw new CustomError(500, 'falta implementar deleteProduct!','')
     }    
 }
