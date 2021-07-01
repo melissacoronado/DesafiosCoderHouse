@@ -18,7 +18,10 @@ import { Usuario } from './service/users'
 
 const config = require('./helper/config');
 
-let puerto = require('minimist')(process.argv.slice(2)) || 8080;
+let arg = require('minimist')(process.argv.slice(2));
+let puerto = arg.p || 8080;
+
+require('dotenv').config({ path: `.env.${process.env.NODE_ENV}` })
 
 
 const handlebars = require('express-handlebars');
