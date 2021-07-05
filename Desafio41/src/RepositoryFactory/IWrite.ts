@@ -1,3 +1,3 @@
 export interface IWrite<T>{
-    saveMsg(): Promise<T[]>;
+    saveMsg(msg: T): Promise<Boolean>;
 }

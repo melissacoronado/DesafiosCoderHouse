@@ -1,17 +1,19 @@
 import { IRead } from "./IRead";
 import { IWrite } from "./IWrite";
 import { ChatMsg, IChat } from "../service/mensajes";
+import {mensajesModel} from '../models/mensajes';
 
-let opsChat = new ChatMsg();
 
 export abstract class BaseRepository<T> implements IRead<T>, IWrite<T>{
-    async saveMsg(): Promise<T[]> {
-        throw new Error("Method not implemented.");
+    async saveMsg(newMsg: T): Promise<Boolean> {
+        const Msg = new mensajesModel(newMsg);         
+        const inserted = await Msg.save();
+        return inserted;
     }
 
     async findMsg(): Promise<T[]> {
-        let ChatMsg:IChat[] = await opsChat.getMessages();
-        return ChatMsg;
+        const chatMsgFound: T[] = await mensajesModel.find({}).toArray();
+        return chatMsgFound;
     }
     
 }
