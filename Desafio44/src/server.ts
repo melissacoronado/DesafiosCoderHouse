@@ -15,6 +15,8 @@ import { logger } from './helper/logger';
 export const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 import { Usuario } from './service/users'
+import RouterProductosGQL from './routes/productosGraphRoute';
+const routerProductos = new RouterProductosGQL()
 
 const config = require('./helper/config');
 
@@ -88,6 +90,7 @@ app.use(passport.session());
 app.use('/api', RouterViewsProductos);
 app.use('/api/productos', RouterProductos);
 app.use("/", AuthUsers);
+app.use('/productosGQL', routerProductos.start())
 //app.use("/scripts", express.static(__dirname + '/public/scripts'));
 //app.set('scripts', express.static(path.resolve(__dirname + '/public/scripts/'))); 
 //app.set('socketio', io);

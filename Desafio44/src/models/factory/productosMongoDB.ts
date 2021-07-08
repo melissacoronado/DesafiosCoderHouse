@@ -1,5 +1,5 @@
-import mongoose from 'mongoose'
-const Schema = mongoose.Schema;
+import {productosModel} from '../../models/productos'
+//const db = require('../../service/bd') 
 
 export interface IProd{  
     //Propiedades
@@ -9,24 +9,16 @@ export interface IProd{
     thumbnail:string
 }
 
-const ProductoSchema = new Schema({
-    title: String,
-    price: Number,
-    thumbnail: String
-});
-
-const ProductoModel = mongoose.model('productos', ProductoSchema);
-
 export default class persistenciaMongo {
     constructor() {
         ;( async () => {
             try {
-                await mongoose.connect('mongodb://localhost/mvc', {
+                /*await mongoose.connect('mongodb://localhost/mvc', {
                     useNewUrlParser: true,
                     useUnifiedTopology: true,
                     useFindAndModify: false,
                     useCreateIndex: true
-                });
+                });*/
                 console.log('Base de datos conectada')
             }
             catch(error) {
@@ -36,7 +28,7 @@ export default class persistenciaMongo {
     }
     obtenerProductos = async () => {
         try {
-            return await ProductoModel.find({}).lean()
+            return await productosModel.find({}).lean()
         }
         catch(error) {
             console.log(error)
@@ -44,7 +36,7 @@ export default class persistenciaMongo {
     }
     agregarProducto = async (producto: IProd) => {
         try {
-            const instance = new ProductoModel(producto);
+            const instance = new productosModel(producto);
             await instance.save()
         }
         catch(error) {
